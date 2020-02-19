@@ -1,4 +1,7 @@
 import React from "react";
+import Admin from "./Pages/Admin";
+import Login from "./Pages/Login";
+import User from "./Pages/User";
 
 const apiKey = "f48778fa26cf72e5fea94697c9ee8692";
 
@@ -98,7 +101,15 @@ function App() {
   getUpcomingMovies();
   getMoviesBySearch("pokemon");
 
-  return <div>asd</div>;
+  return (
+    <div>
+      <User />
+      {/* <Admin /> */}
+      {/* <CardContainer /> */}
+      {/* <Nav/> */}
+      {/* <Login/> */}
+    </div>
+  );
 }
 
 export default App;
