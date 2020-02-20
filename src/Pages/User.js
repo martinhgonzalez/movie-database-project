@@ -6,28 +6,70 @@ class User extends React.Component {
   constructor() {
     super();
     this.state = {
-      filter: ""
+      filter: undefined,
+      searching: undefined,
+      genre: undefined
     };
   }
+  clickedGenreFilter = param => {
+    this.resetValues();
 
-  componentDidMount() {
-    // Fill Genre array from local storage.
-    // If empty, fill it with API call and save into localStorage
-    // Fill Movies Array from local storage
-  }
-
-  clickedFilter(param) {
+    this.setState({ genre: param });
+  };
+  clickedFilter = param => {
+    this.resetValues();
     this.setState({ filter: param }); //param is going to be: all, new, favourite, or a genre
-    // Need fixes to add search by name
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.resetValues();
+
+    this.setState({ searching: e.target.firstElementChild.value });
+
+    e.target.reset();
+  };
+  filterByGenre() {
+    let moviesArray = localStorage.getItem("moviesArray");
+    // filter the array
+    // return filteredMoviesArray;
   }
+
+  filterByName() {
+    let moviesArray = localStorage.getItem("moviesArray");
+    // filter the array
+    // return filteredMoviesArray;
+  }
+  filterByNew() {
+    let moviesArray = localStorage.getItem("moviesArray");
+    // filter the array
+    // return filteredMoviesArray;
+  }
+  filterByFav() {
+    let moviesArray = localStorage.getItem("moviesArray");
+    // filter the array
+    // return filteredMoviesArray;
+  }
+
   getMovies() {
-    if (this.state.filter === "all") {
-      //filter array
-    } else if (this.state.filter === "new") {
-      // filter array
+    if (this.state.genre !== undefined) {
+      return this.filterByGenre();
     }
-    //...
-    //Need to build logic to use search by name
+    if (this.state.searching !== undefined) {
+      return this.filterByName();
+    } else if (this.state.filter === "all") {
+      return [1, 2, 3];
+    } else if (this.state.filter === "new") {
+      return this.filterByNew();
+    } else if (this.state.filter === "fav") return this.filterByFav();
+  }
+
+  resetValues() {
+    this.setState({
+      filter: undefined,
+      searching: undefined,
+      genre: undefined
+    });
   }
 
   render() {
@@ -36,7 +78,13 @@ class User extends React.Component {
         <h1>Welcome User!</h1>
         <Nav
           onClickedFilter={this.clickedFilter} //function to respond to the click event on Nav
+          onHandleSubmit={this.handleSubmit} // the function to handle the search submit
+          onClickedGenreFilter={this.clickedGenreFilter} //function to respond to the click event on genres on Nav
         />
+        <br />
+        <br />
+        <br />
+
         <CardContainer
           filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
         />

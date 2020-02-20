@@ -1,31 +1,74 @@
 import React from "react";
+import { getGenresFromAPI } from "../API/API";
 
 class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      genres: []
+    };
+  }
+
+  setStateToGenres() {
+    getGenresFromAPI()
+      .then(genres => {
+        this.setState({ genres: genres.genres });
+      })
+      .catch(err => console.log(err));
+  }
+
+  componentDidMount() {
+    this.setStateToGenres();
+  }
+
   render() {
+    const {
+      onHandleSubmit,
+      onClickedFilter,
+      onClickedGenreFilter
+    } = this.props;
     return (
       <>
         <nav>
-          <div class="nav-wrapper">
-            <a href="#" className="brand-logo right">
-              Logo
-            </a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <div className="nav-wrapper">
+            <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li>
-                <input
-                  value="Search    "
-                  id="first_name2"
-                  type="text"
-                  className="validate"
-                />
+                <form onSubmit={onHandleSubmit}>
+                  <input id="first_name2" type="text" className="validate" />
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
+                </form>
               </li>
               <li>
-                <a href="sass.html">All</a>
+                <a
+                  onClick={() => {
+                    onClickedFilter("all");
+                  }}
+                  href="#"
+                >
+                  All
+                </a>
               </li>
               <li>
-                <a href="badges.html">Latest</a>
+                <a
+                  onClick={() => {
+                    onClickedFilter("new");
+                  }}
+                  href="#"
+                >
+                  Latest
+                </a>
               </li>
               <li>
-                <a href="collapsible.html">Fav</a>
+                <a
+                  onClick={() => {
+                    onClickedFilter("fav");
+                  }}
+                  href="#"
+                >
+                  Fav
+                </a>
               </li>
               {/*     
         <a className='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
@@ -41,13 +84,34 @@ class Nav extends React.Component {
 
               <li>|</li>
               <li>
-                <a href="sass.html">Drama</a>
+                <a
+                  onClick={() => {
+                    onClickedGenreFilter("drama");
+                  }}
+                  href="#"
+                >
+                  Drama
+                </a>
               </li>
               <li>
-                <a href="badges.html">Comedy</a>
+                <a
+                  onClick={() => {
+                    onClickedGenreFilter("comedy");
+                  }}
+                  href="#"
+                >
+                  Comedy
+                </a>
               </li>
               <li>
-                <a href="collapsible.html">Terror</a>
+                <a
+                  onClick={() => {
+                    onClickedGenreFilter("horror");
+                  }}
+                  href="#"
+                >
+                  Terror
+                </a>
               </li>
             </ul>
           </div>
