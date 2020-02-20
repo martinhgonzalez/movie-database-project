@@ -1,8 +1,12 @@
 import React from "react";
-import Login from "../Pages/Login";
+import Login from '../../Pages/Login/Login';
+import Admin from '../../Pages/Admin/Admin';
+import User from '../../Pages/User/User';
+import Signin from '../../Pages/Signin/Signin';
+import './routes.css';
+
 import {BrowserRouter, Switch, Route, Link, withRouter, Redirect } from 'react-router-dom';
-import Admin from '../Pages/Admin';
-import User from '../Pages/User';
+
 
 class Routs extends React.Component {
     constructor(){
@@ -10,6 +14,7 @@ class Routs extends React.Component {
         
     }
         render(){
+        
             return(
                 <>
                     {/* <BrowserRouter> */}
@@ -21,19 +26,20 @@ class Routs extends React.Component {
                     </Switch> */}
                     {/* </BrowserRouter> */}
                     <BrowserRouter>
-                        <ul>
+                        {/* <ul>
                             <li><Link to="/login">Login</Link></li>
                             <li><Link to="/admin">Admin</Link></li>
                             <li><Link to="/user">User</Link></li>
-                        </ul>
+                        </ul> */}
 
                 
+        
                         <Switch>
-                            <Route path='/user'>
-                                <User/>
-                            </Route>
+                            {/* <Route path='/'  component={Login}/> */}
+                            <Route path='/user'  component={User}/>
                             <Route path='/admin'  component={Admin}/>
                             <Route path='/login'  component={Login}/>
+                            <Route path='/signin'  component={Signin}/>
                         </Switch>
                     </BrowserRouter>
                 </>
