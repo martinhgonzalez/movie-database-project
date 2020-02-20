@@ -2,6 +2,8 @@ import React from "react";
 import Admin from "./Pages/Admin";
 import Login from "./Pages/Login";
 import User from "./Pages/User";
+import Routs from "./Components/Routs";
+
 
 const apiKey = "f48778fa26cf72e5fea94697c9ee8692";
 
@@ -103,11 +105,13 @@ function App() {
 
   return (
     <div>
-      <User />
+      {/* <User /> */}
       {/* <Admin /> */}
       {/* <CardContainer /> */}
       {/* <Nav/> */}
-      {/* <Login/> */}
+      <Login/>
+    
+
     </div>
   );
 }
