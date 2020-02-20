@@ -1,12 +1,16 @@
 import React from "react";
 import LoginForm from "../Components/LoginForm";
 import Routs from "../Components/Routs";
+import {Route, Link, withRouter, Redirect } from 'react-router-dom';
+import Admin from './Admin';
+import User from './User';
 
 class Login extends React.Component {
   constructor(){
     super();
     this.state ={
-      formLogin: {mail: 'abc@mail.com', name:'abc', pass:123 },
+      formLogin: {mail: 'abc@hotmail.com', name:'abc', pass:'123' },
+      login: false
     }
   }
 
@@ -20,13 +24,22 @@ class Login extends React.Component {
   }
   
 
-  show =(e)=>{
+  verify =(e)=>{
     e.preventDefault();
-    console.log('State: ', this.state);
+    if (true) 
+      this.setState({
+        login:true
+      })
+
   }
 
 
+
+
   render() {
+    if (this.state.login) {
+      return <Redirect to={"/user"} />
+    }
     return (
       <div>
         <div>
@@ -42,12 +55,11 @@ class Login extends React.Component {
 
         <LoginForm 
             onChange= {this.handleInputChange}
-            onSubmit={this.show}
+            onSubmit={this.verify}
             formLogin ={this.state.formLogin}
         />
         
-        <button> RUTEO</button>
-        <Routs formLogin={this.state.formLogin}/>
+                    
       </div>
     );
   }

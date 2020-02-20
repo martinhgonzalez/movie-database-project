@@ -109,7 +109,7 @@ function App() {
       {/* <Admin /> */}
       {/* <CardContainer /> */}
       {/* <Nav/> */}
-      <Login/>
+      <Routs/>
     
 
     </div>
