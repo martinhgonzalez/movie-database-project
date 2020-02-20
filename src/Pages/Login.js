@@ -4,13 +4,15 @@ import Routs from "../Components/Routs";
 import {Route, Link, withRouter, Redirect } from 'react-router-dom';
 import Admin from './Admin';
 import User from './User';
+import {getUsersArray} from '../Services/Users';
 
 class Login extends React.Component {
   constructor(){
     super();
     this.state ={
-      formLogin: {mail: 'abc@hotmail.com', name:'abc', pass:'123' },
-      login: false
+      formLogin: {mail: '', name:'', pass:'' },
+      login: false, 
+      arrayUser: []
     }
   }
 
@@ -20,15 +22,21 @@ class Login extends React.Component {
     this.setState({
       [name]: value
     })
-    
   }
   
-
   verify =(e)=>{
+
+    getUsersArray().then(users => {
+      this.setState({
+        'arrayUser':users 
+      })
+    }).catch(error => console.log(error));
+
+
     e.preventDefault();
     if (true) 
       this.setState({
-        login:true
+        login:false
       })
 
   }
