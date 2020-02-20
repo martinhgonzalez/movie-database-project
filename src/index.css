@@ -1,4 +1,6 @@
 body {
+  background-image: url("https://download.hipwallpaper.com/desktop/1920/1080/47/60/k6h1Fi.jpg");
+  
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,3 +13,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.columna{
+  margin-right: 200px;
+  background-color: #b3e5fc  ;
+  border:1px solid black;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding-left: 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  width: 500px;
+  border-radius: 28px 28px 28px 28px;
+  -moz-border-radius: 28px 28px 28px 28px;
+  -webkit-border-radius: 28px 28px 28px 28px;
+  border: 2px solid #000000;
+  text-align: center;
+  
+} 
+/* Este cambia el color del label del campo cuando no está seleccionado */
+.input-field label {
+  color: rgb(109, 109, 109); /* Donde dice #000 pones el color que quieres */
+}
+
+/* Pôr último, este cambia el color al ícono cuando entras a un campo */
+.input-field .prefix.active {
+  color: rgb(0, 0, 0); /* También quieres cambiar esto a otro color, o no? */
+}
+
