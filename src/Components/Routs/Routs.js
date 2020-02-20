@@ -26,11 +26,11 @@ class Routs extends React.Component {
                     </Switch> */}
                     {/* </BrowserRouter> */}
                     <BrowserRouter>
-                        <ul>
+                        {/* <ul>
                             <li><Link to="/login">Login</Link></li>
                             <li><Link to="/admin">Admin</Link></li>
                             <li><Link to="/user">User</Link></li>
-                        </ul>
+                        </ul> */}
 
                 
         
