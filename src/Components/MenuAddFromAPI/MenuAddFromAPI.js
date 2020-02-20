@@ -1,4 +1,5 @@
 import React from "react";
+import './menuAddFromAppi.css';
 
 class MenuAddFromAPI extends React.Component {
   render() {

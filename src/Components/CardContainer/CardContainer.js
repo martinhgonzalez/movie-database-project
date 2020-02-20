@@ -1,14 +1,13 @@
 import React from "react";
-import Card from "./Card";
+import Card from "../Cards/Card";
+import './cardContainer.css';
+
 
 function CardContainer(props) {
   return (
     <>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <Card/>
+      <Card/>
     </>
   );
 }

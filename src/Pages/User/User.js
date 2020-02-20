@@ -1,10 +1,14 @@
 import React from "react";
-import Nav from "../Components/Nav";
-import CardContainer from "../Components/CardContainer";
+import Nav from "../../Components/Nav/Nav";
+import CardContainer from "../../Components/CardContainer/CardContainer";
+import './user.css';
+import Login from '../Login/Login';
+
 
 class User extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log('PROPS:',props);
     this.state = {
       filter: undefined,
       searching: undefined,

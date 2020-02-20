@@ -1,6 +1,7 @@
 import React from "react";
-import MenuAddFromAPI from "../Components/MenuAddFromAPI";
-import AddForm from "../Components/AddForm";
+import MenuAddFromAPI from "../../Components/MenuAddFromAPI/MenuAddFromAPI";
+import AddForm from "../../Components/addForm/AddForm";
+import "./admin.css";
 
 class Admin extends React.Component {
   render() {
