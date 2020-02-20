@@ -1,5 +1,5 @@
 import React from "react";
-import { getGenresFromAPI } from "../API/API";
+import { getGenresFromAPI } from "../Services/API";
 
 class Nav extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Nav extends React.Component {
   setStateToGenres() {
     getGenresFromAPI()
       .then(genres => {
-        this.setState({ genres: genres.genres });
+        this.setState({ genres: genres });
       })
       .catch(err => console.log(err));
   }
