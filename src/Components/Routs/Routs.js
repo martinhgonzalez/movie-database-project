@@ -35,7 +35,8 @@ class Routs extends React.Component {
                 
         
                         <Switch>
-                            <Route path='/'  component={Login}/>
+                            {/* <Route path='/'  component={Login}/> */}
+                            <Route path='/user'  component={User}/>
                             <Route path='/admin'  component={Admin}/>
                             <Route path='/login'  component={Login}/>
                             <Route path='/signin'  component={Signin}/>
