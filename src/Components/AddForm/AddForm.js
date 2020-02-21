@@ -1,5 +1,5 @@
 import React from "react";
-import './addForm.css';
+import "./addForm.css";
 
 class AddForm extends React.Component {
   render() {
@@ -7,66 +7,49 @@ class AddForm extends React.Component {
       <>
         <div className="row">
           <div className="input-field col s6">
-            <input
-              value="Alvin"
-              id="first_name2"
-              type="text"
-              className="validate"
-            />
+            <input id="first_name2" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
-              First Name
+              Title
             </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s6">
-            <input
-              value="Alvin"
-              id="first_name2"
-              type="text"
-              className="validate"
-            />
+            <input id="first_name2" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
-              First Name
+              Overview
             </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s6">
-            <input
-              value="Alvin"
-              id="first_name2"
-              type="text"
-              className="validate"
-            />
+            <input id="first_name2" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
-              First Name
+              Release Date
             </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s6">
-            <input
-              value="Alvin"
-              id="first_name2"
-              type="text"
-              className="validate"
-            />
+            <input id="first_name2" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
-              First Name
+              id
             </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s6">
-            <input
-              value="Alvin"
-              id="first_name2"
-              type="text"
-              className="validate"
-            />
+            <input id="first_name2" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
-              First Name
+              genres //insert a multiple select here
+            </label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s6">
+            <input id="first_name2" type="text" className="validate" />
+            <label className="active" htmlFor="first_name2">
+              Img Url
             </label>
           </div>
         </div>
