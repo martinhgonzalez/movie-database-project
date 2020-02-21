@@ -2,19 +2,18 @@ import React from "react";
 import Nav from "../../Components/Nav/Nav";
 import CardContainer from "../../Components/CardContainer/CardContainer";
 import './user.css';
-import Login from '../Login/Login';
-
 
 class User extends React.Component {
   constructor(props) {
     super(props);
-    console.log('PROPS:',props);
+    // console.log(props);
     this.state = {
       filter: undefined,
       searching: undefined,
       genre: undefined
     };
   }
+
   clickedGenreFilter = param => {
     this.resetValues();
 
@@ -77,6 +76,14 @@ class User extends React.Component {
   }
 
   render() {
+//     console.log('Generos' , getGenresFromAPI());
+// console.log('Latest' , getLatestMovie());
+// console.log('Now' , getNowPlayingMovies());
+// console.log('Popular' , getPopularMovies());
+// console.log('Related' , getTopRatedMovies());
+// console.log('Uncoming' , getUpcomingMovies());
+// console.log('by search' , getMoviesBySearch("The Green Pack"));
+//     console.log(this.state.genre);
     return (
       <>
         <h1>Welcome User!</h1>
@@ -85,12 +92,10 @@ class User extends React.Component {
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
           onClickedGenreFilter={this.clickedGenreFilter} //function to respond to the click event on genres on Nav
         />
-        <br />
-        <br />
-        <br />
-
+  
         <CardContainer
           filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
+          
         />
       </>
     );

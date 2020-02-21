@@ -59,13 +59,22 @@ async function getMoviesBySearch(param) {
   return searchedMovies.results;
 }
 
-// getGenresFromAPI();
-// getLatestMovie();
-// getNowPlayingMovies();
-// getPopularMovies();
-// getTopRatedMovies();
-// getUpcomingMovies();
-// getMoviesBySearch("pokemon");
+getGenresFromAPI();
+getLatestMovie();
+getNowPlayingMovies();
+getPopularMovies();
+getTopRatedMovies();
+getUpcomingMovies();
+getMoviesBySearch("The Green Pack");
+
+
+// console.log('Generos' , getGenresFromAPI());
+// console.log('Latest' , getLatestMovie());
+// console.log('Now' , getNowPlayingMovies());
+// console.log('Popular' , getPopularMovies());
+// console.log('Related' , getTopRatedMovies());
+// console.log('Uncoming' , getUpcomingMovies());
+// console.log('by search' , getMoviesBySearch("The Green Pack"));
 
 export {
   getGenresFromAPI,

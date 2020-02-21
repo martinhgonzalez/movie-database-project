@@ -22,7 +22,9 @@ class Card extends React.Component {
             <span className="card-title grey-text text-darken-4">
               Nombre de la pelicula<i className="material-icons right">close</i>
             </span>
-            <p> Desctripcion de la pelicula       </p>
+            <p> Desctripcion de la pelicula</p>
+            <a class="btn-floating btn-large waves-effect waves-light #212121 grey darken-4 right"><i class="material-icons">star</i></a>
+
           </div>
           </div>
         </div>

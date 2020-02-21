@@ -5,6 +5,7 @@ import './nav.css';
 class Nav extends React.Component {
   constructor(props) {
     super(props);
+    console.log('POR', props);
     this.state = {
       genres: []
     };
@@ -31,44 +32,19 @@ class Nav extends React.Component {
     return (
       <>
         <nav>
-          
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li>
-                <form onSubmit={onHandleSubmit}>
-                  
+                <form onSubmit={onHandleSubmit}>  
                   <input id="first_name2" type="text" className="validate #bcaaa4 brown lighten-3" placeholder="Search"/>
                   <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
               </li>
-              <li><a onClick={() => {
-                    onClickedFilter("all");
-                  }}
-                  href="#"
-                >
-                  All
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => {
-                    onClickedFilter("new");
-                  }}
-                  href="#"
-                >
-                  Latest
-                </a>
-              </li>
-              <li>
-                <a
-                  onClick={() => {
-                    onClickedFilter("fav");
-                  }}
-                  href="#"
-                >
-                  Fav
-                </a>
-              </li>
+              
+              <li><a onClick={() => { onClickedFilter("all"); }} href="#"> All </a> </li>
+              <li><a onClick={() => { onClickedFilter("new"); }} href="#"> Latest </a></li>
+              <li><a onClick={() => { onClickedFilter("fav"); }} href="#"> Favorite </a> </li>
+
               {/*     
         <a className='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
 
