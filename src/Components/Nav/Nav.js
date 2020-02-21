@@ -29,6 +29,7 @@ class Nav extends React.Component {
       onClickedFilter,
       onClickedGenreFilter
     } = this.props;
+    //console.log(this.state.genres[0].name);
     return (
       <>
         <nav>
@@ -88,10 +89,18 @@ class Nav extends React.Component {
                   Terror
                 </a>
               </li>
+              <li>
+              <select class="browser-default">
+                <option value="" disabled selected>Genres</option>
+                <option value="1">Action</option>
+                <option value="2">Adventure</option>
+                <option value="3">Animation</option>
+              </select>    
+              </li>
             </ul>
           </div>
         </nav>
-      </>
+</>
     );
   }
 }
