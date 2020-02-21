@@ -1,6 +1,6 @@
 import React from "react";
 import { getGenresFromAPI } from "../../Services/API";
-import './nav.css';
+import "./nav.css";
 
 class Nav extends React.Component {
   constructor(props) {
@@ -12,11 +12,18 @@ class Nav extends React.Component {
   }
 
   setStateToGenres() {
-    getGenresFromAPI()
-      .then(genres => {
-        this.setState({ genres: genres });
-      })
-      .catch(err => console.log(err));
+    if (localStorage.getItem("genres") === null) {
+      getGenresFromAPI()
+        .then(genres => {
+          this.setState({ genres: genres });
+          localStorage.setItem("genres", JSON.stringify(genres));
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.setState({
+        genres: localStorage.getItem("genres")
+      });
+    }
   }
 
   componentDidMount() {
@@ -45,18 +52,6 @@ class Nav extends React.Component {
               <li><a onClick={() => { onClickedFilter("all"); }} href="#"> All </a> </li>
               <li><a onClick={() => { onClickedFilter("new"); }} href="#"> Latest </a></li>
               <li><a onClick={() => { onClickedFilter("fav"); }} href="#"> Favorite </a> </li>
-
-              {/*     
-        <a className='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-
-        <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="#!">one</a></li>
-            <li><a href="#!">two</a></li>
-            <li class="divider" tabindex="-1"></li>
-            <li><a href="#!">three</a></li>
-            <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-        </ul> */}
 
               <li>|</li>
               <li>

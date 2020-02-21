@@ -1,35 +1,54 @@
 import React from "react";
-import MenuAddFromAPI from "../../Components/MenuAddFromAPI/MenuAddFromAPI";
-import AddForm from "../../Components/addForm/AddForm";
 import "./admin.css";
+import AddMovieContainer from "../../Components/AddMovieContainer/AddMovieContainer";
+import { getGenresFromAPI } from "../../Services/API";
 
 class Admin extends React.Component {
-  constructor(){
+  constructor() {
     super();
-    this.state={
-      option:{value:''}
+    this.state = {
+      displaying: "none"
+    };
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("genres") === null) {
+      getGenresFromAPI()
+        .then(genres => {
+          localStorage.setItem("genres", JSON.stringify(genres));
+        })
+        .catch(err => console.log(err));
     }
   }
+
+  onClickBtn = param => {
+    this.setState({
+      displaying: param
+    });
+  };
+
   render() {
-    if(this.state.option)
-    return (
-      <>
-        <h1 class="center-align">WELCOME ADMIN</h1>
-        <h3 class="center-align"> ¿Qué desea hacer?</h3>
-        <div class="divButtons">
-          <button class="btn waves-effect waves-light #424242 grey darken-3" type="submit" name="action">Agregar desde API</button>
-          <button class="btn waves-effect waves-light #424242 grey darken-3" type="submit" name="action">Agregar personalizada</button>
-        </div>
-        {/* <span className="waves-effect waves-light btn-large">
-          <i className="material-icons left">attach_money</i>button
-        </span>
-        <span className="waves-effect waves-light btn-large">
-          <i className="material-icons right">attach_money</i>button
-        </span> */}
-        <MenuAddFromAPI/>
-        <AddForm />
-      </>
-    );
+    if (this.state.option)
+      return (
+        <>
+          <h1>WELCOME ADMIN</h1>
+          <span
+            onClick={() => this.onClickBtn("api")}
+            className="waves-effect waves-light btn-large"
+          >
+            ADD MOVIES FROM API
+          </span>
+
+          <span
+            onClick={() => this.onClickBtn("custom")}
+            value="custom"
+            className="waves-effect waves-light btn-large"
+          >
+            ADD CUSTOM MOVIE
+          </span>
+          <AddMovieContainer display={this.state.displaying} />
+        </>
+      );
   }
 }
 

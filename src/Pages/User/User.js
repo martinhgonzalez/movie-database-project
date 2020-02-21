@@ -1,12 +1,11 @@
 import React from "react";
 import Nav from "../../Components/Nav/Nav";
 import CardContainer from "../../Components/CardContainer/CardContainer";
-import './user.css';
+import "./user.css";
 
 class User extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(props);
     this.state = {
       filter: undefined,
       searching: undefined,
@@ -32,27 +31,25 @@ class User extends React.Component {
 
     e.target.reset();
   };
-  
+
   filterByGenre() {
-    let moviesArray = localStorage.getItem("moviesArray");
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
     // return filteredMoviesArray;
   }
 
   filterByName() {
-    let moviesArray = localStorage.getItem("moviesArray");
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
     // return filteredMoviesArray;
   }
   filterByNew() {
-    const moviesArray= JSON.parse(localStorage.getItem('latest'));
-    console.log(moviesArray);
-    
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
     // return filteredMoviesArray;
   }
   filterByFav() {
-    let moviesArray = localStorage.getItem("moviesArray");
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
     // return filteredMoviesArray;
   }
@@ -68,8 +65,7 @@ class User extends React.Component {
       return [1, 2, 3, 4, 5, 6];
     } else if (this.state.filter === "new") {
       return this.filterByNew();
-    } else if (this.state.filter === "fav") 
-      return this.filterByFav();
+    } else if (this.state.filter === "fav") return this.filterByFav();
   }
 
   resetValues() {
@@ -81,14 +77,6 @@ class User extends React.Component {
   }
 
   render() {
-// console.log('Generos' , getGenresFromAPI());
-// console.log('Latest' , getLatestMovie());
-// console.log('Now' , getNowPlayingMovies());
-// console.log('Popular' , getPopularMovies());
-// console.log('Related' , getTopRatedMovies());
-// console.log('Uncoming' , getUpcomingMovies());
-// console.log('by search' , getMoviesBySearch("The Green Pack"));
-//     console.log(this.state.genre);
     return (
       <>
         <h1>Welcome User!</h1>
@@ -97,10 +85,9 @@ class User extends React.Component {
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
           onClickedGenreFilter={this.clickedGenreFilter} //function to respond to the click event on genres on Nav
         />
-  
+
         <CardContainer
           filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
-          
         />
       </>
     );

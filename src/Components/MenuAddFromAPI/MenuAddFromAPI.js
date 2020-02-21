@@ -1,38 +1,98 @@
 import React from "react";
-import './menuAddFromAppi.css';
+import "./menuAddFromAppi.css";
+import {
+  getNowPlayingMovies,
+  getPopularMovies,
+  getTopRatedMovies,
+  getUpcomingMovies,
+  getMoviesBySearch
+} from "../../Services/API";
 
-class MenuAddFromAPI extends React.Component {
-  render() {
-    return (
-      <>
+function MenuAddFromAPI(props) {
+  //
+  const handleClick = param => {
+    if (param === "nowPlaying") {
+      getNowPlayingMovies().then(movies => {
+        props.sendArray(movies);
+      });
+    } else if (param === "popular") {
+      getPopularMovies().then(movies => {
+        props.sendArray(movies);
+      });
+    } else if (param === "topRated") {
+      getTopRatedMovies().then(movies => {
+        props.sendArray(movies);
+      });
+    } else if (param === "upcoming") {
+      getUpcomingMovies().then(movies => {
+        props.sendArray(movies);
+      });
+    }
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    getMoviesBySearch(e.target.firstElementChild.value).then(movies => {
+      props.sendArray(movies);
+    });
+    e.target.reset();
+  };
+
+  return (
+    <>
       <ul>
-      
-      <button class="btn waves-effect waves-light" type="submit" name="action">Latest
-        <i class="material-icons right">send</i>
-      </button>
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>
-
-{/* 
-        <li className="waves-effect waves-light btn-small">Button</li>
-        <li className="waves-effect waves-light btn-small">
-          <i className="material-icons left">cloud</i>button
+        <button
+          onClick={() => handleClick("nowPlaying")}
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Now Playing
+          <i class="material-icons right">send</i>
+        </button>
+        <button
+          onClick={() => handleClick("popular")}
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Popular
+          <i class="material-icons right">send</i>
+        </button>{" "}
+        onClick={() => handleClick("topRated")}{" "}
+        <button
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Top Rated
+          <i class="material-icons right">send</i>
+        </button>{" "}
+        onClick={() => handleClick("upcoming")}{" "}
+        <button
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Upcoming
+          <i class="material-icons right">send</i>
+        </button>
+        <li>
+          <form onSubmit={handleSubmit}>
+            <input
+              id="first_name2"
+              type="text"
+              className="validate #bcaaa4 brown lighten-3"
+              placeholder="Search"
+            />
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </form>
         </li>
-        <li className="waves-effect waves-light btn-small">
-          <i className="material-icons right">cloud</i>button
-        </li> */}
-</ul>
-      </>
-
-    );
-  }
+      </ul>
+    </>
+  );
 }
 
 export default MenuAddFromAPI;
