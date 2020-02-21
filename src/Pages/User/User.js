@@ -65,7 +65,7 @@ class User extends React.Component {
     if (this.state.searching !== undefined) {
       return this.filterByName();
     } else if (this.state.filter === "all") {
-      return [1, 2, 3];
+      return [1, 2, 3, 4, 5, 6];
     } else if (this.state.filter === "new") {
       return this.filterByNew();
     } else if (this.state.filter === "fav") 

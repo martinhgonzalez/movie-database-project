@@ -8,39 +8,53 @@ class AddForm extends React.Component {
         <div className="row">
           <div className="input-field col s6">
             <input
-              value="Alvin"
+              value=""
               id="first_name2"
               type="text"
               className="validate"
             />
             <label className="active" htmlFor="first_name2">
-              First Name
+              Title
             </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s6">
             <input
-              value="Alvin"
+              value=""
               id="first_name2"
               type="text"
               className="validate"
             />
             <label className="active" htmlFor="first_name2">
-              First Name
+              Image
             </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s6">
             <input
-              value="Alvin"
+              value=""
               id="first_name2"
               type="text"
               className="validate"
             />
             <label className="active" htmlFor="first_name2">
-              First Name
+              Description
+            </label>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="input-field col s6">
+            <input
+              value=""
+              id="first_name2"
+              type="text"
+              className="validate"
+            />
+            <label className="active" htmlFor="first_name2">
+              Genre
             </label>
           </div>
         </div>
