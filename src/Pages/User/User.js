@@ -32,6 +32,7 @@ class User extends React.Component {
 
     e.target.reset();
   };
+  
   filterByGenre() {
     let moviesArray = localStorage.getItem("moviesArray");
     // filter the array
@@ -44,7 +45,9 @@ class User extends React.Component {
     // return filteredMoviesArray;
   }
   filterByNew() {
-    let moviesArray = localStorage.getItem("moviesArray");
+    const moviesArray= JSON.parse(localStorage.getItem('latest'));
+    console.log(moviesArray);
+    
     // filter the array
     // return filteredMoviesArray;
   }
@@ -55,6 +58,7 @@ class User extends React.Component {
   }
 
   getMovies() {
+    // console.log(this.state.filter);
     if (this.state.genre !== undefined) {
       return this.filterByGenre();
     }
@@ -64,7 +68,8 @@ class User extends React.Component {
       return [1, 2, 3];
     } else if (this.state.filter === "new") {
       return this.filterByNew();
-    } else if (this.state.filter === "fav") return this.filterByFav();
+    } else if (this.state.filter === "fav") 
+      return this.filterByFav();
   }
 
   resetValues() {
@@ -76,7 +81,7 @@ class User extends React.Component {
   }
 
   render() {
-//     console.log('Generos' , getGenresFromAPI());
+// console.log('Generos' , getGenresFromAPI());
 // console.log('Latest' , getLatestMovie());
 // console.log('Now' , getNowPlayingMovies());
 // console.log('Popular' , getPopularMovies());

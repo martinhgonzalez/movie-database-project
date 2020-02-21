@@ -5,6 +5,7 @@ async function getGenresFromAPI() {
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`
   );
   const genres = await res.json();
+  localStorage.setItem('genres', JSON.stringify(genres.genres));
   return genres.genres;
 }
 
@@ -14,6 +15,7 @@ async function getLatestMovie() {
       `
   );
   const latestMovie = await res.json();
+  localStorage.setItem('latest', JSON.stringify(latestMovie));
   return latestMovie;
 }
 
@@ -23,14 +25,17 @@ async function getNowPlayingMovies() {
       ` //Only page 1.
   );
   const nowPlaying = await res.json();
+  localStorage.setItem('nowPlaying', JSON.stringify(nowPlaying.results));
   return nowPlaying.results;
 }
+
 async function getPopularMovies() {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1    
         ` //Only page 1.
   );
   const popularMovies = await res.json();
+  localStorage.setItem('popular', JSON.stringify(popularMovies.results));
   return popularMovies.results;
 }
 async function getTopRatedMovies() {
@@ -40,6 +45,7 @@ async function getTopRatedMovies() {
         ` //Only page 1.
   );
   const topRatedMovies = await res.json();
+  localStorage.setItem('topRated', JSON.stringify(topRatedMovies.results));
   return topRatedMovies.results;
 }
 
@@ -48,6 +54,7 @@ async function getUpcomingMovies() {
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1` //Only page 1.
   );
   const upcomingMovies = await res.json();
+  localStorage.setItem('upcoming', JSON.stringify(upcomingMovies.results));
   return upcomingMovies.results;
 }
 
@@ -56,6 +63,7 @@ async function getMoviesBySearch(param) {
     `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${param}&page=1&include_adult=false` //Only page 1.
   );
   const searchedMovies = await res.json();
+  
   return searchedMovies.results;
 }
 
@@ -66,6 +74,7 @@ getPopularMovies();
 getTopRatedMovies();
 getUpcomingMovies();
 getMoviesBySearch("The Green Pack");
+
 
 
 // console.log('Generos' , getGenresFromAPI());
@@ -83,5 +92,6 @@ export {
   getPopularMovies,
   getTopRatedMovies,
   getUpcomingMovies,
-  getMoviesBySearch
+  getMoviesBySearch,
+
 };
