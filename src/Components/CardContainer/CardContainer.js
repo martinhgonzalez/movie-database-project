@@ -6,17 +6,28 @@ function CardContainer({ filteredMovies }) {
     if (Array.isArray(filteredMovies)) {
       return filteredMovies.map(createCard);
     } else {
-      return <h2> {filteredMovies} </h2>;
+      return <>{filteredMovies} </>;
     }
   }
+
   function createCard(movie) {
+    const movies = JSON.parse(localStorage.getItem("upcoming"));
+
     return (
-      <Card
-        title={movie.title}
-        imageUrl={movie.imageUrl}
-        description={movie.description}
-        genres={movie.genres}
-      />
+      <>
+        {/* {movies.map((movie, key)=>(
+        <Card
+          movie={movie} key={key}
+        />
+      ))} */}
+
+        <Card
+          imageUrl={movies[3].poster_path}
+          title={movies[3].title}
+          description={movies[3].overview}
+          genres={movies[1].genres}
+        />
+      </>
     );
   }
   return <>{displayCards()}</>;

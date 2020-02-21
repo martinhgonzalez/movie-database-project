@@ -7,7 +7,7 @@ class AddForm extends React.Component {
       <>
         <div className="row">
           <div className="input-field col s6">
-            <input id="first_name2" type="text" className="validate" />
+            <input value="" id="first_name2" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
               Title
             </label>
@@ -15,15 +15,15 @@ class AddForm extends React.Component {
         </div>
         <div className="row">
           <div className="input-field col s6">
-            <input id="first_name2" type="text" className="validate" />
+            <input value="" id="first_name2" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
-              Overview
+              Image
             </label>
           </div>
         </div>
         <div className="row">
           <div className="input-field col s6">
-            <input id="first_name2" type="text" className="validate" />
+            <input id="first_name2" value="" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
               Release Date
             </label>
@@ -37,9 +37,10 @@ class AddForm extends React.Component {
             </label>
           </div>
         </div>
+
         <div className="row">
           <div className="input-field col s6">
-            <input id="first_name2" type="text" className="validate" />
+            <input id="first_name2" value="" type="text" className="validate" />
             <label className="active" htmlFor="first_name2">
               genres //insert a multiple select here
             </label>

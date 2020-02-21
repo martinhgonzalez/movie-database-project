@@ -2,7 +2,6 @@ import React from "react";
 import Nav from "../../Components/Nav/Nav";
 import CardContainer from "../../Components/CardContainer/CardContainer";
 import "./user.css";
-import Login from "../Login/Login";
 
 class User extends React.Component {
   constructor(props) {
@@ -13,6 +12,7 @@ class User extends React.Component {
       genre: undefined
     };
   }
+
   clickedGenreFilter = param => {
     this.resetValues();
 
@@ -31,6 +31,7 @@ class User extends React.Component {
 
     e.target.reset();
   };
+
   filterByGenre() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
@@ -54,13 +55,14 @@ class User extends React.Component {
   }
 
   getMovies() {
+    // console.log(this.state.filter);
     if (this.state.genre !== undefined) {
       return this.filterByGenre();
     }
     if (this.state.searching !== undefined) {
       return this.filterByName();
     } else if (this.state.filter === "all") {
-      return [1, 2, 3];
+      return [1, 2, 3, 4, 5, 6];
     } else if (this.state.filter === "new") {
       return this.filterByNew();
     } else if (this.state.filter === "fav") return this.filterByFav();
@@ -83,9 +85,6 @@ class User extends React.Component {
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
           onClickedGenreFilter={this.clickedGenreFilter} //function to respond to the click event on genres on Nav
         />
-        <br />
-        <br />
-        <br />
 
         <CardContainer
           filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav

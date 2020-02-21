@@ -28,26 +28,27 @@ class Admin extends React.Component {
   };
 
   render() {
-    return (
-      <>
-        <h1>WELCOME ADMIN</h1>
-        <span
-          onClick={() => this.onClickBtn("api")}
-          className="waves-effect waves-light btn-large"
-        >
-          ADD MOVIES FROM API
-        </span>
+    if (this.state.option)
+      return (
+        <>
+          <h1>WELCOME ADMIN</h1>
+          <span
+            onClick={() => this.onClickBtn("api")}
+            className="waves-effect waves-light btn-large"
+          >
+            ADD MOVIES FROM API
+          </span>
 
-        <span
-          onClick={() => this.onClickBtn("custom")}
-          value="custom"
-          className="waves-effect waves-light btn-large"
-        >
-          ADD CUSTOM MOVIE
-        </span>
-        <AddMovieContainer display={this.state.displaying} />
-      </>
-    );
+          <span
+            onClick={() => this.onClickBtn("custom")}
+            value="custom"
+            className="waves-effect waves-light btn-large"
+          >
+            ADD CUSTOM MOVIE
+          </span>
+          <AddMovieContainer display={this.state.displaying} />
+        </>
+      );
   }
 }
 
