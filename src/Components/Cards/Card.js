@@ -17,9 +17,9 @@ class Card extends React.Component {
     return (
       <>
         <div class="row">
-          <div class="col s8 offset-s2">
-            <span class="flow-text"></span>
-            <div class="col s12">
+          <div class="col s8 offset-s4">
+            
+            <div class="col s6">
               <div className="card teal #424242 grey darken-3">
                 <div className="card-image waves-effect waves-block waves-light">
                   <img className="activator" src={url + this.props.imageUrl} />
@@ -30,6 +30,7 @@ class Card extends React.Component {
                     <i className="material-icons right">more_vert</i>
                   </span>
                 </div>
+
                 <div className="card-reveal #795548 brown">
                   <span className="card-title grey-text text-darken-4">
                     {this.props.title}
@@ -44,8 +45,11 @@ class Card extends React.Component {
                     <i class="material-icons">star</i>
                   </a>
                 </div>
+                
               </div>
+
             </div>
+          
           </div>
         </div>
       </>

@@ -33,7 +33,7 @@ class Admin extends React.Component {
         <h1>WELCOME ADMIN</h1>
         <span
           onClick={() => this.onClickBtn("api")}
-          className="waves-effect waves-light btn-large"
+          className="waves-effect waves-light btn-large #212121 grey darken-4"
         >
           ADD MOVIES FROM API
         </span>
@@ -41,7 +41,7 @@ class Admin extends React.Component {
         <span
           onClick={() => this.onClickBtn("custom")}
           value="custom"
-          className="waves-effect waves-light btn-large"
+          className="waves-effect waves-light btn-large #212121 grey darken-4"
         >
           ADD CUSTOM MOVIE
         </span>
