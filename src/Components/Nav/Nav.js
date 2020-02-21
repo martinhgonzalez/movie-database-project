@@ -1,6 +1,6 @@
 import React from "react";
 import { getGenresFromAPI } from "../../Services/API";
-import './nav.css';
+import "./nav.css";
 
 class Nav extends React.Component {
   constructor(props) {
@@ -11,11 +11,18 @@ class Nav extends React.Component {
   }
 
   setStateToGenres() {
-    getGenresFromAPI()
-      .then(genres => {
-        this.setState({ genres: genres });
-      })
-      .catch(err => console.log(err));
+    if (localStorage.getItem("genres") === null) {
+      getGenresFromAPI()
+        .then(genres => {
+          this.setState({ genres: genres });
+          localStorage.setItem("genres", JSON.stringify(genres));
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.setState({
+        genres: localStorage.getItem("genres")
+      });
+    }
   }
 
   componentDidMount() {
@@ -31,17 +38,24 @@ class Nav extends React.Component {
     return (
       <>
         <nav>
-          
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li>
                 <form onSubmit={onHandleSubmit}>
-                  
-                  <input id="first_name2" type="text" className="validate #bcaaa4 brown lighten-3" placeholder="Search"/>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <input
+                    id="first_name2"
+                    type="text"
+                    className="validate #bcaaa4 brown lighten-3"
+                    placeholder="Search"
+                  />
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
                 </form>
               </li>
-              <li><a onClick={() => {
+              <li>
+                <a
+                  onClick={() => {
                     onClickedFilter("all");
                   }}
                   href="#"

@@ -1,14 +1,12 @@
 import React from "react";
 import Nav from "../../Components/Nav/Nav";
 import CardContainer from "../../Components/CardContainer/CardContainer";
-import './user.css';
-import Login from '../Login/Login';
-
+import "./user.css";
+import Login from "../Login/Login";
 
 class User extends React.Component {
   constructor(props) {
     super(props);
-    console.log('PROPS:',props);
     this.state = {
       filter: undefined,
       searching: undefined,
@@ -34,23 +32,23 @@ class User extends React.Component {
     e.target.reset();
   };
   filterByGenre() {
-    let moviesArray = localStorage.getItem("moviesArray");
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
     // return filteredMoviesArray;
   }
 
   filterByName() {
-    let moviesArray = localStorage.getItem("moviesArray");
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
     // return filteredMoviesArray;
   }
   filterByNew() {
-    let moviesArray = localStorage.getItem("moviesArray");
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
     // return filteredMoviesArray;
   }
   filterByFav() {
-    let moviesArray = localStorage.getItem("moviesArray");
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
     // filter the array
     // return filteredMoviesArray;
   }

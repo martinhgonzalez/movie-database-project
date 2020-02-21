@@ -1,21 +1,51 @@
 import React from "react";
-import MenuAddFromAPI from "../../Components/MenuAddFromAPI/MenuAddFromAPI";
-import AddForm from "../../Components/addForm/AddForm";
 import "./admin.css";
+import AddMovieContainer from "../../Components/AddMovieContainer/AddMovieContainer";
+import { getGenresFromAPI } from "../../Services/API";
 
 class Admin extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      displaying: "none"
+    };
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("genres") === null) {
+      getGenresFromAPI()
+        .then(genres => {
+          localStorage.setItem("genres", JSON.stringify(genres));
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+  onClickBtn = param => {
+    this.setState({
+      displaying: param
+    });
+  };
+
   render() {
     return (
       <>
         <h1>WELCOME ADMIN</h1>
-        <span className="waves-effect waves-light btn-large">
-          <i className="material-icons left">attach_money</i>button
+        <span
+          onClick={() => this.onClickBtn("api")}
+          className="waves-effect waves-light btn-large"
+        >
+          ADD MOVIES FROM API
         </span>
-        <span className="waves-effect waves-light btn-large">
-          <i className="material-icons right">attach_money</i>button
+
+        <span
+          onClick={() => this.onClickBtn("custom")}
+          value="custom"
+          className="waves-effect waves-light btn-large"
+        >
+          ADD CUSTOM MOVIE
         </span>
-        <MenuAddFromAPI />
-        <AddForm />
+        <AddMovieContainer display={this.state.displaying} />
       </>
     );
   }
