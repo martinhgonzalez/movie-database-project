@@ -5,10 +5,14 @@ import "./nav.css";
 class Nav extends React.Component {
   constructor(props) {
     super(props);
-    console.log('POR', props);
     this.state = {
-      genres: []
+      genres: [],
+      selection: 0
     };
+  }
+
+  componentDidMount() {
+    this.setStateToGenres();
   }
 
   setStateToGenres() {
@@ -21,81 +25,104 @@ class Nav extends React.Component {
         .catch(err => console.log(err));
     } else {
       this.setState({
-        genres: localStorage.getItem("genres")
+        genres: JSON.parse(localStorage.getItem("genres"))
       });
     }
   }
 
-  componentDidMount() {
-    this.setStateToGenres();
-  }
+  iterateGenres = () => {
+    return this.state.genres.map(genre => {
+      return <option value={genre.id}>{genre.name}</option>;
+    });
+  };
+
+  submitedSearch = e => {
+    this.props.onHandleSubmit(e);
+    this.setState({ selection: 0 });
+  };
+
+  selectedGenreFilter = e => {
+    this.props.onSelectedGenreFilter(e);
+    this.setState({ selection: 0 });
+  };
+
+  selectedFilter = param => {
+    this.props.onClickedFilter(param);
+    this.setState({ selection: 0 });
+  };
+  onSelectChange = e => {
+    this.setState({ selection: e.value });
+    this.props.onSelectedGenreFilter(e);
+  };
 
   render() {
-    const {
-      onHandleSubmit,
-      onClickedFilter,
-      onClickedGenreFilter
-    } = this.props;
-    //console.log(this.state.genres[0].name);
     return (
       <>
         <nav>
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li>
-                <form onSubmit={onHandleSubmit}>  
-                  <input id="first_name2" type="text" className="validate #bcaaa4 brown lighten-3" placeholder="Search"/>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                <form onSubmit={this.submitedSearch}>
+                  <input
+                    id="first_name2"
+                    type="text"
+                    className="validate #bcaaa4 brown lighten-3"
+                    placeholder="Search"
+                  />
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
                 </form>
               </li>
-              
-              <li><a onClick={() => { onClickedFilter("all"); }} href="#"> All </a> </li>
-              <li><a onClick={() => { onClickedFilter("new"); }} href="#"> Latest </a></li>
-              <li><a onClick={() => { onClickedFilter("fav"); }} href="#"> Favorite </a> </li>
 
-              <li>|</li>
               <li>
                 <a
                   onClick={() => {
-                    onClickedGenreFilter("drama");
+                    this.selectedFilter("all");
                   }}
-                  href="#"
                 >
-                  Drama
+                  {" "}
+                  All{" "}
+                </a>{" "}
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    this.selectedFilter("new");
+                  }}
+                >
+                  {" "}
+                  Latest{" "}
                 </a>
               </li>
               <li>
                 <a
                   onClick={() => {
-                    onClickedGenreFilter("comedy");
+                    this.selectedFilter("fav");
                   }}
-                  href="#"
                 >
-                  Comedy
-                </a>
+                  {" "}
+                  Favorite{" "}
+                </a>{" "}
               </li>
+
               <li>
-                <a
-                  onClick={() => {
-                    onClickedGenreFilter("horror");
-                  }}
-                  href="#"
+                <select
+                  onChange={this.onSelectChange}
+                  // onClick={this.selectedGenreFilter}
+                  value={this.state.selection}
+                  class="browser-default"
                 >
-                  Terror
-                </a>
-              </li>
-              <li>
-              <select class="browser-default">
-                <option value="" disabled selected>Genres</option>
-                <option value="1">Action</option>
-                <option value="2">Adventure</option>
-                <option value="3">Animation</option>
-              </select>    
+                  <option value="0" disabled>
+                    Genres
+                  </option>
+                  {this.iterateGenres()}
+                </select>
               </li>
             </ul>
           </div>
         </nav>
-</>
+      </>
     );
   }
 }

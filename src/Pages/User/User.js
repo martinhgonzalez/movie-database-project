@@ -9,14 +9,25 @@ class User extends React.Component {
     this.state = {
       filter: undefined,
       searching: undefined,
-      genre: undefined
+      genreId: undefined
     };
   }
 
-  clickedGenreFilter = param => {
-    this.resetValues();
+  componentDidMount() {
+    // search for user favorites in the localStorage. If its empty it should create one based on the specific user json content
 
-    this.setState({ genre: param });
+    if (!localStorage.getItem("user1Favorites")) {
+      //user1 would be dynamical
+      localStorage.setItem(
+        "user1Favorites",
+        "[419704, 454626, 449924, 495764, 330457]"
+      );
+    }
+  }
+
+  selectedGenreFilter = e => {
+    this.resetValues();
+    this.setState({ genreId: e.target.value });
   };
   clickedFilter = param => {
     this.resetValues();
@@ -32,37 +43,66 @@ class User extends React.Component {
     e.target.reset();
   };
 
-  filterByGenre() {
+  filterByGenre = () => {
+    // Receives the id of the genre and saves it as a state
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    // filter the array
-    // return filteredMoviesArray;
-  }
 
-  filterByName() {
+    let filtered = moviesArray.filter(movie => {
+      return movie.genre_ids.includes(parseInt(this.state.genreId));
+    });
+
+    return filtered;
+  };
+
+  filterByName = () => {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    // filter the array
-    // return filteredMoviesArray;
-  }
+
+    let filtered = moviesArray.filter(movie => {
+      return movie.title
+        .toLowerCase()
+        .includes(this.state.searching.toLowerCase());
+    });
+
+    return filtered;
+  };
   filterByNew() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    // filter the array
-    // return filteredMoviesArray;
+
+    let actualTimeStamp = this.toTimestamp(new Date());
+    let filtered = moviesArray.filter(movie => {
+      return (
+        this.toTimestamp(movie.release_date) >= actualTimeStamp - 2592000 &&
+        this.toTimestamp(movie.release_date) <= actualTimeStamp
+      );
+    });
+    return filtered;
   }
+  toTimestamp(strDate) {
+    let datum = Date.parse(strDate);
+    return datum / 1000;
+  }
+
   filterByFav() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    // filter the array
-    // return filteredMoviesArray;
+    let favorites = JSON.parse(localStorage.getItem("user1Favorites"));
+    let filtered = moviesArray.filter(movie => {
+      let flag = false;
+      favorites.forEach(idFav => {
+        if (movie.id === idFav) flag = true;
+      });
+      return flag;
+    });
+    return filtered;
   }
 
   getMovies() {
-    // console.log(this.state.filter);
-    if (this.state.genre !== undefined) {
+    if (this.state.genreId !== undefined) {
       return this.filterByGenre();
     }
     if (this.state.searching !== undefined) {
       return this.filterByName();
     } else if (this.state.filter === "all") {
-      return [1, 2, 3, 4, 5, 6];
+      return JSON.parse(localStorage.getItem("movies"));
     } else if (this.state.filter === "new") {
       return this.filterByNew();
     } else if (this.state.filter === "fav") return this.filterByFav();
@@ -72,7 +112,7 @@ class User extends React.Component {
     this.setState({
       filter: undefined,
       searching: undefined,
-      genre: undefined
+      genreId: undefined
     });
   }
 
@@ -83,7 +123,7 @@ class User extends React.Component {
         <Nav
           onClickedFilter={this.clickedFilter} //function to respond to the click event on Nav
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
-          onClickedGenreFilter={this.clickedGenreFilter} //function to respond to the click event on genres on Nav
+          onSelectedGenreFilter={this.selectedGenreFilter} //function to respond to the click event on genres on Nav
         />
 
         <CardContainer
