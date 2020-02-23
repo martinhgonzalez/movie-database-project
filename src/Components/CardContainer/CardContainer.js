@@ -15,11 +15,9 @@ function CardContainer({ filteredMovies }) {
 
     return (
       <>
-        {/* {movies.map((movie, key)=>(
-        <Card
-          movie={movie} key={key}
-        />
-      ))} */}
+        {movies.map((movie, key) => (
+          <Card movie={movie} key={key} />
+        ))}
 
         <Card
           imageUrl={movies[3].poster_path}
@@ -30,6 +28,6 @@ function CardContainer({ filteredMovies }) {
       </>
     );
   }
-  return <>{displayCards()}</>;
+  return <>{}</>;
 }
 export default CardContainer;
