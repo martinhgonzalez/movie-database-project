@@ -30,18 +30,15 @@ class Admin extends React.Component {
   render() {
     return (
       <>
-        <h1>WELCOME ADMIN</h1>
-        <span
-          onClick={() => this.onClickBtn("api")}
-          className="waves-effect waves-light btn-large #212121 grey darken-4"
-        >
-          ADD MOVIES FROM API
+        <h1 class="center-align">WELCOME ADMIN</h1>
+          <span onClick={() => this.onClickBtn("api")}
+            className="waves-effect waves-light btn-large #212121 grey darken-4" >
+            ADD MOVIES FROM API
         </span>
 
         <span
           onClick={() => this.onClickBtn("custom")}
-          value="custom"
-          className="waves-effect waves-light btn-large #212121 grey darken-4"
+          value="custom" className="waves-effect waves-light btn-large #212121 grey darken-4"
         >
           ADD CUSTOM MOVIE
         </span>

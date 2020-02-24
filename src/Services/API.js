@@ -5,6 +5,7 @@ async function getGenresFromAPI() {
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`
   );
   const genres = await res.json();
+  localStorage.setItem("genres", JSON.stringify(genres));
   return genres.genres;
 }
 
@@ -14,6 +15,7 @@ async function getLatestMovie() {
       `
   );
   const latestMovie = await res.json();
+  localStorage.setItem("latest", JSON.stringify(latestMovie.results));
   return latestMovie;
 }
 
@@ -23,6 +25,7 @@ async function getNowPlayingMovies() {
       ` //Only page 1.
   );
   const nowPlaying = await res.json();
+  localStorage.setItem("latest", JSON.stringify(nowPlaying.results));
   return nowPlaying.results;
 }
 
@@ -32,6 +35,7 @@ async function getPopularMovies() {
         ` //Only page 1.
   );
   const popularMovies = await res.json();
+  localStorage.setItem("popular", JSON.stringify(popularMovies.results));
   return popularMovies.results;
 }
 async function getTopRatedMovies() {
@@ -41,6 +45,7 @@ async function getTopRatedMovies() {
         ` //Only page 1.
   );
   const topRatedMovies = await res.json();
+  localStorage.setItem("topRated", JSON.stringify(topRatedMovies.results));
   return topRatedMovies.results;
 }
 
@@ -49,6 +54,7 @@ async function getUpcomingMovies() {
     `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1` //Only page 1.
   );
   const upcomingMovies = await res.json();
+  localStorage.setItem("upComing", JSON.stringify(upcomingMovies.results));
   return upcomingMovies.results;
 }
 
