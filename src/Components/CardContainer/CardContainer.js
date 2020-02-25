@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../Cards/Card";
 
-function CardContainer({ filteredMovies }) {
+function CardContainer({ filteredMovies}) {
   
   function displayCards() {
     if (Array.isArray(filteredMovies)) {

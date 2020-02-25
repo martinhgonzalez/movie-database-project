@@ -25,7 +25,7 @@ async function getNowPlayingMovies() {
       ` //Only page 1.
   );
   const nowPlaying = await res.json();
-  localStorage.setItem("latest", JSON.stringify(nowPlaying.results));
+  localStorage.setItem("nowPlaying", JSON.stringify(nowPlaying.results));
   return nowPlaying.results;
 }
 

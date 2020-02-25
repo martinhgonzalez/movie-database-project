@@ -52,8 +52,10 @@ class Nav extends React.Component {
               </li>
               
               <li><a onClick={() => { onClickedFilter("all"); }} href="#"> All </a> </li>
-              <li><a onClick={() => { onClickedFilter("latest"); }} href="#"> Latest </a></li>
+              <li><a onClick={() => { onClickedFilter("nowPlaying"); }} href="#"> Now Playing </a></li>
               <li><a onClick={() => { onClickedFilter("favorite"); }} href="#"> Favorite </a> </li>
+              <li><a onClick={() => { onClickedFilter("popular"); }} href="#"> Popular </a> </li>
+              
 
               <li>|</li>
               <li><a onClick={() => { onClickedGenreFilter("drama");}} href="#">Drama</a></li>
