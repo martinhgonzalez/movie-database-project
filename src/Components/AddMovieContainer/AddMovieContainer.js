@@ -33,7 +33,8 @@ class AddMovieContainer extends React.Component {
   };
 
   showAddMethod() {
-    if (this.props.display === "custom") return <AddForm />;
+    if (this.props.display === "custom")
+      return <AddForm sendMovie={this.receiveArray} />;
     else if (this.props.display === "api")
       return <MenuAddFromAPI sendArray={this.receiveArray} />;
     else return <h2>Pick a method to add Movies!</h2>;
