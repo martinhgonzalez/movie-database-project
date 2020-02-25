@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../Cards/Card";
+import "./cardContainer.css";
 
 function CardContainer({ filteredMovies}) {
   
@@ -14,6 +15,7 @@ function CardContainer({ filteredMovies}) {
   function createCard(movie) {
     return (
       <>
+    
         <Card
           imageUrl={movie.poster_path}
           title={movie.title}

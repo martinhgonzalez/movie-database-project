@@ -9,6 +9,7 @@ class Nav extends React.Component {
       genres: []
     };
   }
+  
 
   setStateToGenres() {
     if (localStorage.getItem("genres") === null) {
@@ -29,6 +30,18 @@ class Nav extends React.Component {
     this.setStateToGenres();
   }
 
+  filterName(){
+    if(this.props.filter === 'all'){
+      return 'All';
+    }else if(this.props.filter === 'nowPlaying'){
+      return 'Now Playing';
+    }else if(this.props.filter === 'popular'){
+      return 'Populars';
+    }else if(this.props.filter === 'favorite'){
+      return 'Favorites';
+    } else if(this.props.filter === 'upcoming') return 'Up coming';
+    
+  }
 
   render() {
     const {
@@ -87,8 +100,11 @@ class Nav extends React.Component {
               </select>    
               </li>
             </ul>
+            <div class="center-align">{this.filterName()} movies!</div>  
           </div>
+      
         </nav>
+        
 </>
     );
   }

@@ -4,8 +4,6 @@ import CardContainer from "../../Components/CardContainer/CardContainer";
 import "./user.css";
 
 
-
-
 class User extends React.Component {
   constructor(props) {
     super(props);
@@ -141,6 +139,7 @@ filterByName() {
       return this.filterByName();
 
     } else if (this.state.filter === "all") {
+
       return this.allmovies();
     } else if (this.state.filter === "nowPlaying") {
       return this.filterByNow();
@@ -168,14 +167,14 @@ filterByName() {
       <>
         <h1>Welcome User!</h1>
         <Nav
+          filter ={this.state.filter}
           onClickedFilter={this.clickedFilter} //function to respond to the click event on Nav ALL, LATEST
           onClickedGenreFilter={this.clickedGenreFilter} //function to respond to the click event on genres on Nav DRAMA, COMEDY, HORROR
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
-          
         />
 
         <CardContainer
-
+          
           filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
         />
       </>
