@@ -26,10 +26,18 @@ class AddMovieContainer extends React.Component {
 
   receiveArray = async apiCall => {
     let merged = this.mergeArrays(this.state.movies, apiCall);
-    this.setState({
-      movies: merged
-    });
-    localStorage.setItem("movies", JSON.stringify(merged));
+    let newMovies = merged.length - this.state.movies.length;
+    if (newMovies === 0) {
+      alert(
+        "We didn't manage to add any new Movie!\nPlease try again with a different criteria."
+      );
+    } else {
+      this.setState({
+        movies: merged
+      });
+      localStorage.setItem("movies", JSON.stringify(merged));
+      alert(`We added ${newMovies} movie/s successfully`);
+    }
   };
 
   showAddMethod() {
