@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
             <img src="https://icon-icons.com/icons2/933/PNG/128/round-account-button-with-user-inside_icon-icons.com_72596.png"></img>
             {/* E-mail */}
             <div className="row">
-              <div className="input-field col s6 ">
+              <div className="input-field col s12   ">
                 <i className="material-icons prefix ">email</i>
                 
                 <input type="email" name ="mail" className="validate" value={this.props.formLogin.mailUser} onChange={this.props.onChange} id="email"    />

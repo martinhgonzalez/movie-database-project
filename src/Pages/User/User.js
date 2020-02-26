@@ -3,20 +3,22 @@ import Nav from "../../Components/Nav/Nav";
 import CardContainer from "../../Components/CardContainer/CardContainer";
 import "./user.css";
 
+
 class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filter: undefined,
+      filter: "upcoming",
       searching: undefined,
       genreId: undefined
     };
   }
 
+
   componentDidMount() {
     // search for user favorites in the localStorage. If its empty it should create one based on the specific user json content
 
-    if (!localStorage.getItem("user1Favorites")) {
+    if (!localStorage.getItem("user1Favorites")) {  //to fix
       //user1 would be dynamical
       localStorage.setItem(
         "user1Favorites",
@@ -28,21 +30,24 @@ class User extends React.Component {
   selectedGenreFilter = e => {
     this.resetValues();
     this.setState({ genreId: e.target.value });
+
   };
+
+//Change the state filter
   clickedFilter = param => {
+    let array = JSON.parse(localStorage.getItem("movies"));
     this.resetValues();
     this.setState({ filter: param }); //param is going to be: all, new, favourite, or a genre
   };
 
+
+  }
   handleSubmit = e => {
     e.preventDefault();
     this.resetValues();
-
     this.setState({ searching: e.target.firstElementChild.value });
-
-    e.target.reset();
+    
   };
-
   filterByGenre = () => {
     // Receives the id of the genre and saves it as a state
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
@@ -95,19 +100,45 @@ class User extends React.Component {
     return filtered;
   }
 
+  filterByPopurarity(){ //to fix
+    let popMoviesArray = JSON.parse(localStorage.getItem("popular"));
+    if(popMoviesArray == null){
+      alert('pop: No existen las peliculas, comuniquese con el admin');
+    return null;
+    }
+    return popMoviesArray;
+  }
+  
+  filterByUpcoming(){ //to fix
+    let upMoviesArray = JSON.parse(localStorage.getItem("upComing"));
+    if(upMoviesArray == null){
+      alert('Aún no existen películas!!!');
+    return null;
+    }
+    return upMoviesArray;
+  }
+  
+
   getMovies() {
     if (this.state.genreId !== undefined) {
       return this.filterByGenre();
     }
     if (this.state.searching !== undefined) {
       return this.filterByName();
+
     } else if (this.state.filter === "all") {
+
       return JSON.parse(localStorage.getItem("movies"));
     } else if (this.state.filter === "new") {
       return this.filterByNew();
-    } else if (this.state.filter === "fav") return this.filterByFav();
+    } else if (this.state.filter === "favorite"){
+      return this.filterByFav();
+    } else if (this.state.filter === "popular"){ //to fix
+      return this.filterByPopurarity();
+    }else if (this.state.filter === "upcoming"){ //to fix
+      return this.filterByUpcoming();
+    }
   }
-
   resetValues() {
     this.setState({
       filter: undefined,
@@ -121,12 +152,14 @@ class User extends React.Component {
       <>
         <h1>Welcome User!</h1>
         <Nav
-          onClickedFilter={this.clickedFilter} //function to respond to the click event on Nav
+          filter ={this.state.filter}       //prop to set the msg of the right (current filter)
+          onClickedFilter={this.clickedFilter} //function to respond to the click event on Nav ALL, LATEST
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
           onSelectedGenreFilter={this.selectedGenreFilter} //function to respond to the click event on genres on Nav
         />
 
         <CardContainer
+          
           filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
         />
       </>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./addMovieContainer.css";
+
 import MenuAddFromAPI from "../MenuAddFromAPI/MenuAddFromAPI";
 import AddForm from "../AddForm/AddForm";
 
@@ -37,7 +37,7 @@ class AddMovieContainer extends React.Component {
       return <AddForm sendMovie={this.receiveArray} />;
     else if (this.props.display === "api")
       return <MenuAddFromAPI sendArray={this.receiveArray} />;
-    else return <h2>Pick a method to add Movies!</h2>;
+    else return <h2 class="center-align" >Pick a method to add Movies!</h2>;
   }
 
   render() {

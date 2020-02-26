@@ -10,6 +10,7 @@ class Nav extends React.Component {
       selection: 0
     };
   }
+  
 
   componentDidMount() {
     this.setStateToGenres();
@@ -55,6 +56,19 @@ class Nav extends React.Component {
     this.props.onSelectedGenreFilter(e);
   };
 
+  filterName(){ //to fix
+    if(this.props.filter === 'all'){
+      return 'All';
+    }else if(this.props.filter === 'nowPlaying'){
+      return 'Now Playing';
+    }else if(this.props.filter === 'popular'){
+      return 'Populars';
+    }else if(this.props.filter === 'favorite'){
+      return 'Favorites';
+    } else if(this.props.filter === 'upcoming') return 'Up coming';
+    
+  }
+
   render() {
     return (
       <>
@@ -92,13 +106,13 @@ class Nav extends React.Component {
                   }}
                 >
                   {" "}
-                  Latest{" "}
+                  Latest{" "} //to fix
                 </a>
               </li>
               <li>
                 <a
                   onClick={() => {
-                    this.selectedFilter("fav");
+                    this.selectedFilter("fav");//to fix
                   }}
                 >
                   {" "}
@@ -120,8 +134,11 @@ class Nav extends React.Component {
                 </select>
               </li>
             </ul>
+            <div class="center-align">{this.filterName()} movies!</div> //to fix
           </div>
+      
         </nav>
+
       </>
     );
   }
