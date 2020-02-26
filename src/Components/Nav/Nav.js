@@ -90,6 +90,7 @@ class Nav extends React.Component {
 
               <li>
                 <a
+                  className="hovered grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("all");
                   }}
@@ -99,6 +100,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="hovered grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("new");
                   }}
@@ -108,6 +110,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="hovered grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("favorite");
                   }}
@@ -117,6 +120,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="hovered grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("popular");
                   }}
@@ -126,6 +130,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="hovered grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("upcoming");
                   }}
