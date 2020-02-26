@@ -11,16 +11,16 @@ class Card extends React.Component {
 
       favorites.splice(index, 1);
       this.setState({ favorites: favorites });
-      // alert(
-      //   `${this.props.title}\n\nRemoved succesfully to your favorite list!`
-      // );
+      alert(
+        `${this.props.title}\n\nRemoved succesfully to your favorite list!`
+      );
       localStorage.setItem("user1Favorites", JSON.stringify(favorites));
     } else {
       favorites.push(this.props.id);
 
       this.setState({ favorites: favorites });
 
-      // alert(`${this.props.title}\n\nAdded succesfully to your favorite list!`);
+      alert(`${this.props.title}\n\nAdded succesfully to your favorite list!`);
       localStorage.setItem("user1Favorites", JSON.stringify(favorites));
     }
   };
