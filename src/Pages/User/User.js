@@ -8,15 +8,29 @@ class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filter: 'upcoming',
+      filter: "upcoming",
       searching: undefined,
-      genre: undefined
+      genreId: undefined
     };
   }
 
-  clickedGenreFilter = param => {
+
+  componentDidMount() {
+    // search for user favorites in the localStorage. If its empty it should create one based on the specific user json content
+
+    if (!localStorage.getItem("user1Favorites")) {  //to fix
+      //user1 would be dynamical
+      localStorage.setItem(
+        "user1Favorites",
+        "[419704, 454626, 449924, 495764, 330457]"
+      );
+    }
+  }
+
+  selectedGenreFilter = e => {
     this.resetValues();
-    this.setState({ genre: param });
+    this.setState({ genreId: e.target.value });
+
   };
 
 //Change the state filter
@@ -27,24 +41,6 @@ class User extends React.Component {
   };
 
 
-
-//Filter by genre by state
-  filterByGenre() {
-    let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    let moviesArrayGenres = JSON.parse(localStorage.getItem("genres"));
-    if(this.state.genre === "drama"){
-      console.log("movies", moviesArray);
-      console.log("genres", moviesArrayGenres);
-    return moviesArrayGenres;
-    }else if( this.state.genre === "comedy"){
-        console.log('comedy');
-        return moviesArrayGenres;
-    }else if(this.state.genre ==="horror"){
-      console.log('horror');
-      return moviesArrayGenres;
-    }
-    
-    
   }
   handleSubmit = e => {
     e.preventDefault();
@@ -52,55 +48,59 @@ class User extends React.Component {
     this.setState({ searching: e.target.firstElementChild.value });
     
   };
-
-  
-filterByName() {
+  filterByGenre = () => {
+    // Receives the id of the genre and saves it as a state
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    let moviesByName =[];
-    
-    for( let i = 0; i < moviesArray.length; i++){
-      if(moviesArray[i].title == this.state.searching){
-        moviesByName.push(moviesArray[i]);
 
-    }
-  }
-    return moviesByName;
-   // let arraySearched = moviesArray.filter(title => this.state.searching);
-   // console.log(arraySearched);
-   // return arraySearched;
+    let filtered = moviesArray.filter(movie => {
+      return movie.genre_ids.includes(parseInt(this.state.genreId));
+    });
 
-  } 
+    return filtered;
+  };
 
+  filterByName = () => {
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
 
-//Return latest movies
+    let filtered = moviesArray.filter(movie => {
+      return movie.title
+        .toLowerCase()
+        .includes(this.state.searching.toLowerCase());
+    });
+
+    return filtered;
+  };
   filterByNew() {
-    let latestMoviesArray = JSON.parse(localStorage.getItem("latest"));
-    if(latestMoviesArray == null){
-      alert('latest: No existen las peliculas, comuniquese con el admin');
-    return null;
-    }
-    return latestMoviesArray;
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
+
+    let actualTimeStamp = this.toTimestamp(new Date());
+    let filtered = moviesArray.filter(movie => {
+      return (
+        this.toTimestamp(movie.release_date) >= actualTimeStamp - 2592000 &&
+        this.toTimestamp(movie.release_date) <= actualTimeStamp
+      );
+    });
+    return filtered;
   }
-  
-  filterByNow() {
-    let nowMoviesArray = JSON.parse(localStorage.getItem("nowPlaying"));
-    if(nowMoviesArray == null){
-      alert('Now: No existen las peliculas, comuniquese con el admin');
-    return null;
-    }
-    return nowMoviesArray;
+  toTimestamp(strDate) {
+    let datum = Date.parse(strDate);
+    return datum / 1000;
   }
 
   filterByFav() {
-    let favMoviesArray = JSON.parse(localStorage.getItem("favorites"));
-    if(favMoviesArray == null){
-      alert('Fav: aún no tiene películas en favoritos!');
-    return null;
-    }
-    return favMoviesArray;
+    let moviesArray = JSON.parse(localStorage.getItem("movies"));
+    let favorites = JSON.parse(localStorage.getItem("user1Favorites"));
+    let filtered = moviesArray.filter(movie => {
+      let flag = false;
+      favorites.forEach(idFav => {
+        if (movie.id === idFav) flag = true;
+      });
+      return flag;
+    });
+    return filtered;
   }
 
-  filterByPopurarity(){
+  filterByPopurarity(){ //to fix
     let popMoviesArray = JSON.parse(localStorage.getItem("popular"));
     if(popMoviesArray == null){
       alert('pop: No existen las peliculas, comuniquese con el admin');
@@ -109,7 +109,7 @@ filterByName() {
     return popMoviesArray;
   }
   
-  filterByUpcoming(){
+  filterByUpcoming(){ //to fix
     let upMoviesArray = JSON.parse(localStorage.getItem("upComing"));
     if(upMoviesArray == null){
       alert('Aún no existen películas!!!');
@@ -118,21 +118,9 @@ filterByName() {
     return upMoviesArray;
   }
   
-//Return an array fill of all movies in the local storage
-  allmovies(){
-    let allMoviesArray = JSON.parse(localStorage.getItem("movies"));
-    if(allMoviesArray == null){
-      alert('All: No existen las peliculas, comuniquese con el admin');
-    return null;
-    }
-    return allMoviesArray;
-  }
-  
-
 
   getMovies() {
-    // console.log(this.state.filter);
-    if (this.state.genre !== undefined) {
+    if (this.state.genreId !== undefined) {
       return this.filterByGenre();
     }
     if (this.state.searching !== undefined) {
@@ -140,17 +128,14 @@ filterByName() {
 
     } else if (this.state.filter === "all") {
 
-      return this.allmovies();
-    } else if (this.state.filter === "nowPlaying") {
-      return this.filterByNow();
-      
-    } else if (this.state.filter === "latest") {
+      return JSON.parse(localStorage.getItem("movies"));
+    } else if (this.state.filter === "new") {
       return this.filterByNew();
     } else if (this.state.filter === "favorite"){
       return this.filterByFav();
-    } else if (this.state.filter === "popular"){
+    } else if (this.state.filter === "popular"){ //to fix
       return this.filterByPopurarity();
-    }else if (this.state.filter === "upcoming"){
+    }else if (this.state.filter === "upcoming"){ //to fix
       return this.filterByUpcoming();
     }
   }
@@ -158,7 +143,7 @@ filterByName() {
     this.setState({
       filter: undefined,
       searching: undefined,
-      genre: undefined
+      genreId: undefined
     });
   }
 
@@ -167,10 +152,10 @@ filterByName() {
       <>
         <h1>Welcome User!</h1>
         <Nav
-          filter ={this.state.filter}
+          filter ={this.state.filter}       //prop to set the msg of the right (current filter)
           onClickedFilter={this.clickedFilter} //function to respond to the click event on Nav ALL, LATEST
-          onClickedGenreFilter={this.clickedGenreFilter} //function to respond to the click event on genres on Nav DRAMA, COMEDY, HORROR
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
+          onSelectedGenreFilter={this.selectedGenreFilter} //function to respond to the click event on genres on Nav
         />
 
         <CardContainer

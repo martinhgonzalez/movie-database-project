@@ -15,7 +15,6 @@ function CardContainer({ filteredMovies}) {
   function createCard(movie) {
     return (
       <>
-    
         <Card
           imageUrl={movie.poster_path}
           title={movie.title}
@@ -25,6 +24,6 @@ function CardContainer({ filteredMovies}) {
       </>
     );
   }
-  return <>{displayCards()}</>;
+  return <>{}</>;
 }
 export default CardContainer;

@@ -6,10 +6,15 @@ class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      genres: []
+      genres: [],
+      selection: 0
     };
   }
   
+
+  componentDidMount() {
+    this.setStateToGenres();
+  }
 
   setStateToGenres() {
     if (localStorage.getItem("genres") === null) {
@@ -21,16 +26,37 @@ class Nav extends React.Component {
         .catch(err => console.log(err));
     } else {
       this.setState({
-        genres: localStorage.getItem("genres")
+        genres: JSON.parse(localStorage.getItem("genres"))
       });
     }
   }
 
-  componentDidMount() {
-    this.setStateToGenres();
-  }
+  iterateGenres = () => {
+    return this.state.genres.map(genre => {
+      return <option value={genre.id}>{genre.name}</option>;
+    });
+  };
 
-  filterName(){
+  submitedSearch = e => {
+    this.props.onHandleSubmit(e);
+    this.setState({ selection: 0 });
+  };
+
+  selectedGenreFilter = e => {
+    this.props.onSelectedGenreFilter(e);
+    this.setState({ selection: 0 });
+  };
+
+  selectedFilter = param => {
+    this.props.onClickedFilter(param);
+    this.setState({ selection: 0 });
+  };
+  onSelectChange = e => {
+    this.setState({ selection: e.value });
+    this.props.onSelectedGenreFilter(e);
+  };
+
+  filterName(){ //to fix
     if(this.props.filter === 'all'){
       return 'All';
     }else if(this.props.filter === 'nowPlaying'){
@@ -44,68 +70,76 @@ class Nav extends React.Component {
   }
 
   render() {
-    const {
-      onHandleSubmit,
-      onClickedFilter,
-      onClickedGenreFilter
-    } = this.props;
-    
-
-
     return (
       <>
         <nav>
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li>
-                <form onSubmit={onHandleSubmit}>  
-                  <input id="first_name2" type="text" className="validate #bcaaa4 brown lighten-3" placeholder="Search"/>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                <form onSubmit={this.submitedSearch}>
+                  <input
+                    id="first_name2"
+                    type="text"
+                    className="validate #bcaaa4 brown lighten-3"
+                    placeholder="Search"
+                  />
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
                 </form>
               </li>
-              
-              <li><a onClick={() => { onClickedFilter("all"); }} href="#"> All </a> </li>
-              <li><a onClick={() => { onClickedFilter("nowPlaying"); }} href="#"> Now Playing </a></li>
-              <li><a onClick={() => { onClickedFilter("favorite"); }} href="#"> Favorite </a> </li>
-              <li><a onClick={() => { onClickedFilter("popular"); }} href="#"> Popular </a> </li>
-              
 
-              <li>|</li>
-              <li><a onClick={() => { onClickedGenreFilter("drama");}} href="#">Drama</a></li>
-              <li><a onClick={() => { }}href="#">Comedy </a></li>
-              <li><a onClick={() => { onClickedGenreFilter("horror"); }}  href="#" > Horror</a></li>
               <li>
-              <select defaultValue="0" className="browser-default">
-                <option value="0" disabled >Genres</option>
-                <option value="1" onChange={() => { onClickedGenreFilter("drama");}} >Action</option>
-                <option value="2">Adventure</option>
-                <option value="3">Animation</option>
-                <option value="4">Comedy</option>
-                <option value="5">Crime</option>
-                <option value="6">Documentary</option>
-                <option value="7">Drama</option>
-                <option value="8">Family</option>
-                <option value="9">Fantasy</option>
-                <option value="10">History</option>
-                <option value="11">Horror</option>
-                <option value="12">Music</option>
-                <option value="13">Mystery</option>
-                <option value="14">Romance</option>
-                <option value="15">Science Fiction</option>
-                <option value="16">TV Movie</option>
-                <option value="17">Thriller</option>
-                <option value="18">War</option>
-                <option value="19">Western</option>
+                <a
+                  onClick={() => {
+                    this.selectedFilter("all");
+                  }}
+                >
+                  {" "}
+                  All{" "}
+                </a>{" "}
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    this.selectedFilter("new");
+                  }}
+                >
+                  {" "}
+                  Latest{" "} //to fix
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    this.selectedFilter("fav");//to fix
+                  }}
+                >
+                  {" "}
+                  Favorite{" "}
+                </a>{" "}
+              </li>
 
-              </select>    
+              <li>
+                <select
+                  onChange={this.onSelectChange}
+                  // onClick={this.selectedGenreFilter}
+                  value={this.state.selection}
+                  class="browser-default"
+                >
+                  <option value="0" disabled>
+                    Genres
+                  </option>
+                  {this.iterateGenres()}
+                </select>
               </li>
             </ul>
-            <div class="center-align">{this.filterName()} movies!</div>  
+            <div class="center-align">{this.filterName()} movies!</div> //to fix
           </div>
       
         </nav>
-        
-</>
+
+      </>
     );
   }
 }
