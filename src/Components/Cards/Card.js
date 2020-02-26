@@ -11,20 +11,27 @@ class Card extends React.Component {
 
       favorites.splice(index, 1);
       this.setState({ favorites: favorites });
-      alert(
-        `${this.props.title}\n\nRemoved succesfully to your favorite list!`
-      );
+      // alert(
+      //   `${this.props.title}\n\nRemoved succesfully to your favorite list!`
+      // );
       localStorage.setItem("user1Favorites", JSON.stringify(favorites));
     } else {
       favorites.push(this.props.id);
 
       this.setState({ favorites: favorites });
 
-      alert(`${this.props.title}\n\nAdded succesfully to your favorite list!`);
+      // alert(`${this.props.title}\n\nAdded succesfully to your favorite list!`);
       localStorage.setItem("user1Favorites", JSON.stringify(favorites));
     }
   };
+  favoriteIcon = () => {
+    let favorites = JSON.parse(localStorage.getItem("user1Favorites"));
+    const index = favorites.indexOf(this.props.id);
 
+    if (index > -1) {
+      return "favorite";
+    } else return "favorite_border";
+  };
   render() {
     let url = "https://image.tmdb.org/t/p/w500";
 
@@ -54,7 +61,7 @@ class Card extends React.Component {
                     onClick={this.addFav}
                     className="btn-floating btn-large waves-effect waves-light #212121 grey darken-4 right"
                   >
-                    <i className="material-icons">star</i>
+                    <i className="material-icons">{this.favoriteIcon()}</i>
                   </a>
                 </div>
               </div>

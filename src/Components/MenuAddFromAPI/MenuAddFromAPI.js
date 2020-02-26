@@ -46,37 +46,41 @@ function MenuAddFromAPI(props) {
           className="btn waves-effect waves-light"
           type="submit"
           name="action"
-          >Now Playing
+        >
+          Now Playing
           <i className="material-icons right">send</i>
         </button>
-        
+
         <button
           onClick={() => handleClick("popular")}
           className="btn waves-effect waves-light"
           type="submit"
           name="action"
-          >Popular
+        >
+          Popular
           <i className="material-icons right">send</i>
         </button>
-        
+
         <button
           onClick={() => handleClick("topRated")}
           className="btn waves-effect waves-light"
           type="submit"
           name="action"
-          >Top Rated
+        >
+          Top Rated
           <i className="material-icons right">send</i>
         </button>
-        
+
         <button
           onClick={() => handleClick("upcoming")}
           className="btn waves-effect waves-light"
           type="submit"
           name="action"
-          >Upcoming
+        >
+          Upcoming
           <i className="material-icons right">send</i>
         </button>
-        
+
         <li>
           <form onSubmit={handleSubmit}>
             <input
