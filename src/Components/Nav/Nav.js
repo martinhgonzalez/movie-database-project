@@ -10,7 +10,6 @@ class Nav extends React.Component {
       selection: 0
     };
   }
-  
 
   componentDidMount() {
     this.setStateToGenres();
@@ -40,6 +39,7 @@ class Nav extends React.Component {
   submitedSearch = e => {
     this.props.onHandleSubmit(e);
     this.setState({ selection: 0 });
+    e.target.reset();
   };
 
   selectedGenreFilter = e => {
@@ -56,17 +56,16 @@ class Nav extends React.Component {
     this.props.onSelectedGenreFilter(e);
   };
 
-  filterName(){ //to fix
-    if(this.props.filter === 'all'){
-      return 'All';
-    }else if(this.props.filter === 'nowPlaying'){
-      return 'Now Playing';
-    }else if(this.props.filter === 'popular'){
-      return 'Populars';
-    }else if(this.props.filter === 'favorite'){
-      return 'Favorites';
-    } else if(this.props.filter === 'upcoming') return 'Up coming';
-    
+  filterName() {
+    if (this.props.filter === "all") {
+      return "All movies!";
+    } else if (this.props.filter === "new") {
+      return "Now Playing movies!";
+    } else if (this.props.filter === "popular") {
+      return "Popular movies!";
+    } else if (this.props.filter === "favorite") {
+      return "Favorite movies!";
+    } else if (this.props.filter === "upcoming") return "Upcoming movies!";
   }
 
   render() {
@@ -95,9 +94,8 @@ class Nav extends React.Component {
                     this.selectedFilter("all");
                   }}
                 >
-                  {" "}
-                  All{" "}
-                </a>{" "}
+                  All
+                </a>
               </li>
               <li>
                 <a
@@ -105,25 +103,40 @@ class Nav extends React.Component {
                     this.selectedFilter("new");
                   }}
                 >
-                  {" "}
-                  Latest{" "} //to fix
+                  On Screen
                 </a>
               </li>
               <li>
                 <a
                   onClick={() => {
-                    this.selectedFilter("fav");//to fix
+                    this.selectedFilter("favorite");
                   }}
                 >
-                  {" "}
-                  Favorite{" "}
-                </a>{" "}
+                  Favorite
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    this.selectedFilter("popular");
+                  }}
+                >
+                  Popular
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    this.selectedFilter("upcoming");
+                  }}
+                >
+                  Upcoming
+                </a>
               </li>
 
               <li>
                 <select
                   onChange={this.onSelectChange}
-                  // onClick={this.selectedGenreFilter}
                   value={this.state.selection}
                   class="browser-default"
                 >
@@ -134,11 +147,9 @@ class Nav extends React.Component {
                 </select>
               </li>
             </ul>
-            <div class="center-align">{this.filterName()} movies!</div> //to fix
+            <div class="center-align">{this.filterName()}</div>
           </div>
-      
         </nav>
-
       </>
     );
   }
