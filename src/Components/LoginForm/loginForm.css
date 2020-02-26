@@ -1,31 +1,42 @@
-.columna{
-    margin-right: 200px;
-    background-color: #a8a191;
-    border:1px solid #251c1c;
-    margin: 0 auto;
-    margin-top: 60px;
-    padding-left: 10px;
-    padding-top: 30px;
-    padding-bottom: 20px;
-    width: 500px;
-    border-radius: 28px 28px 28px 28px;
-    -moz-border-radius: 28px 28px 28px 28px;
-    -webkit-border-radius: 28px 28px 28px 28px;
-    border: 2px solid #251c1c;
-    text-align: center;
-    
-  } 
-  /* Este cambia el color del label del campo cuando no está seleccionado */
-  .input-field label {
-    color: #251c1c; /* Donde dice #000 pones el color que quieres */
-  }
-  
-  /* Pôr último, este cambia el color al ícono cuando entras a un campo */
-  .input-field .prefix.active {
-    color: #251c1c /* También quieres cambiar esto a otro color, o no? */
-  }
-  
-  .btn{
-    background-color: #251c1c;
-    width: 200px;
-  }
+.columna {
+  margin-right: 200px;
+  background-color: #a8a191;
+  border: 1px solid #251c1c;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding-left: 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  width: 500px;
+  border-radius: 28px 28px 28px 28px;
+  -moz-border-radius: 28px 28px 28px 28px;
+  -webkit-border-radius: 28px 28px 28px 28px;
+  border: 2px solid #251c1c;
+  text-align: center;
+}
+/* Este cambia el color del label del campo cuando no está seleccionado */
+.input-field label {
+  color: #251c1c; /* Donde dice #000 pones el color que quieres */
+}
+
+/* Pôr último, este cambia el color al ícono cuando entras a un campo */
+.input-field .prefix.active {
+  color: #251c1c; /* También quieres cambiar esto a otro color, o no? */
+}
+
+.btn {
+  background-color: #251c1c;
+  width: 200px;
+}
+
+.userImg {
+  height: 5vh;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px #a8a191 inset !important;
+}
