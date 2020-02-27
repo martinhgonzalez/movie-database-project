@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
               </div>
             </div>
             <button
-              className="btn waves-effect "
+              className="btnLogin btn waves-effect "
               type="submit"
               value="Submit"
               name="action"

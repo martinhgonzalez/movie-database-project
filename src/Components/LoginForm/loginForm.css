@@ -1,11 +1,12 @@
 .columna {
   margin-right: 200px;
+  height: 450px;
   background-color: #a8a191;
   border: 1px solid #251c1c;
   margin: 0 auto;
-  margin-top: 60px;
+  margin-top: 80px;
   padding-left: 10px;
-  padding-top: 30px;
+  padding-top: 50px;
   padding-bottom: 20px;
   width: 500px;
   border-radius: 28px 28px 28px 28px;
@@ -27,6 +28,11 @@
 .btn {
   background-color: #251c1c;
   width: 200px;
+}
+
+.btnLogin{
+  margin-top: 50px;
+  margin-left: 145px;
 }
 
 .userImg {

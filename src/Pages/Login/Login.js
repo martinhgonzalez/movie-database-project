@@ -66,7 +66,7 @@ class Login extends React.Component {
           <div className="navbar-fixed center-align">
             <nav>
               <div className="nav-wrapper">
-                <span className="brand-logo">Movies</span>
+                <span className="h1login brand-logo">Movies</span>
               </div>
             </nav>
           </div>
