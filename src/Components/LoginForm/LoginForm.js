@@ -3,7 +3,7 @@ import "./loginForm.css";
 
 class LoginForm extends React.Component {
   constructor(props) {
-    super(props);
+    super();
   }
 
   render() {
@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
                 <label htmlFor="email">E-mail</label>
               </div>
             </div>
-            
+
             {/* Password */}
             <div className="row">
               <div className="input-field col s6">

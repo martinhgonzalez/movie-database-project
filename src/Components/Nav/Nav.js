@@ -34,7 +34,11 @@ class Nav extends React.Component {
 
   iterateGenres = () => {
     return this.state.genres.map(genre => {
-      return <option value={genre.id}>{genre.name}</option>;
+      return (
+        <option key={genre.id} value={genre.id}>
+          {genre.name}
+        </option>
+      );
     });
   };
 
@@ -83,14 +87,15 @@ class Nav extends React.Component {
               <li>
                 <form onSubmit={this.submitedSearch}>
                   <input
+                    required
                     id="first_name2"
                     type="text"
                     className="inputNav validate #bcaaa4 brown lighten-3"
                     placeholder="Search"
                   />
                 </form>
-                </li>
-                <div className="  divNavOptions">
+              </li>
+      <div className="  divNavOptions">
                   <li>
                     <div className="searchNav">
                       <button type="submit" className="  buttonNav #ffffff white btn btn-primary">

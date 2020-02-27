@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "../../Components/Nav/Nav";
 import CardContainer from "../../Components/CardContainer/CardContainer";
 import "./user.css";
+import { Redirect } from "react-router-dom";
 
 class User extends React.Component {
   constructor(props) {
@@ -9,15 +10,18 @@ class User extends React.Component {
     this.state = {
       filter: "all",
       searching: undefined,
-      genreId: undefined
+      genreId: undefined,
+      loggedUser: JSON.parse(localStorage.getItem("loggedUser"))
     };
   }
 
   componentDidMount() {
-    // search for user favorites in the localStorage. If its empty it should create one based on the specific user json content
-    //user1 would be dynamical
-    if (!localStorage.getItem("user1Favorites")) {
-      localStorage.setItem("user1Favorites", "[]");
+    console.log(this.state.loggedUser);
+
+    if (!localStorage.getItem(`${this.state.loggedUser.name} favorites`)) {
+      console.log("creandooo");
+
+      localStorage.setItem(`${this.state.loggedUser.name} favorites`, "[]");
     }
   }
 
@@ -103,7 +107,9 @@ class User extends React.Component {
 
   filterByFav() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    let favorites = JSON.parse(localStorage.getItem("user1Favorites"));
+    let favorites = JSON.parse(
+      localStorage.getItem(`${this.state.loggedUser.name} favorites`)
+    );
     let filtered = moviesArray.filter(movie => {
       let flag = false;
       favorites.forEach(idFav => {
@@ -206,19 +212,27 @@ class User extends React.Component {
   }
 
   render() {
+    if (JSON.parse(this.state.loggedUser.type === 0)) {
+      alert("Oops!\nPlease login first:");
+      return <Redirect to={"/login"} />;
+    }
+
     return (
       <>
-        <h1 className="h1User">Welcome User!</h1>
+        <h1 className="h1User">Welcome {this.state.loggedUser.name} </h1>
         <Nav
           filter={this.state.filter} //prop to set the msg of the right (current filter)
           onClickedFilter={this.clickedFilter} //function to respond to the click event on Nav ALL, LATEST
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
           onSelectedGenreFilter={this.selectedGenreFilter} //function to respond to the click event on genres on Nav
         />
-
-        <CardContainer
-          filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
-        />
+        <div className="cardContainer container">
+          <div className="row">
+            <CardContainer
+              filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
+            />
+          </div>
+        </div>
       </>
     );
   }
