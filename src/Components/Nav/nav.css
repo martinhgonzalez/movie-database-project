@@ -1,7 +1,15 @@
-.browser-default{
-    background-color: #252121;
-    color: white;
-    margin-top: 10px;
+.browser-default {
+  background-color: #252121;
+  color: white;
+  margin-top: 10px;
+}
+
+a:hover {
+  color: grey;
+}
+
+.filterName {
+  margin: auto 10rem;
 }
 
 .buttonNav{

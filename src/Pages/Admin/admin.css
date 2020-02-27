@@ -31,3 +31,10 @@ body{
     border: 1px solid #000000;
     /* opacity: 0.3    ; */
 }
+
+.logout {
+  display: inline-block;
+  width: 100vw;
+  text-align: right;
+}
+

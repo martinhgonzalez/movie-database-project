@@ -1,13 +1,15 @@
 import React from "react";
 import { getGenresFromAPI } from "../../Services/API";
 import "./nav.css";
+import { Redirect } from "react-router-dom";
 
 class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       genres: [],
-      selection: 0
+      selection: 0,
+      loggingOut: false
     };
   }
 
@@ -69,6 +71,9 @@ class Nav extends React.Component {
   }
 
   render() {
+    if (this.state.loggingOut === true) {
+      return <Redirect to={"/login"} />;
+    }
     return (
       <>
         <nav>
@@ -97,6 +102,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("all");
                   }}
@@ -106,6 +112,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("new");
                   }}
@@ -115,6 +122,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("favorite");
                   }}
@@ -124,6 +132,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("popular");
                   }}
@@ -133,6 +142,7 @@ class Nav extends React.Component {
               </li>
               <li>
                 <a
+                  className="grey darken-3 btn-small "
                   onClick={() => {
                     this.selectedFilter("upcoming");
                   }}
@@ -153,9 +163,23 @@ class Nav extends React.Component {
                   {this.iterateGenres()}
                 </select>
               </li>
-              </div>
+              <li>
+                <div className=" filterName center-align">
+                  {this.filterName()}
+                </div>
+              </li>
+              <li>
+                <a
+                  className="grey darken-3 btn-small "
+                  onClick={() => {
+                    this.setState({ loggingOut: true });
+                  }}
+                >
+                  <i class="material-icons left">vpn_key</i>
+                  Logout
+                </a>
+              </li>
             </ul>
-            <div class="center-align">{this.filterName()}</div>
           </div>
         </nav>
       </>
