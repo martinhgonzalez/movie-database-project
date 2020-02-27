@@ -1,0 +1,55 @@
+.formApi{
+    background-color:rgba(201, 173, 141, 0.7);
+    border-radius: 38px 38px 38px 38px;
+    border-radius: 38px 38px 38px 38px;
+    -webkit-border-radius: 38px 38px 38px 38px;
+    border: 1px solid #000000;
+    width: 700px;
+    margin-left: 30%;
+    margin-top: 80px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 50px;
+}
+
+/* .inputAddForm{ */
+    /* background-color: rgba(177, 155, 131, 0.7); */
+/* } */
+
+.nameOfInput{
+    /* background-color: violet; */
+    font-family:'Helvetica','Verdana','Monaco',sans-serif;
+    /* font-size: 500px; */
+    font-weight: bolder;
+}
+
+.h2AddForm{
+    text-align: center;
+    margin-left: -30px;
+    /* margin-top: 80px; */
+}
+
+.butSubmitAddForm{
+    margin-left: 220px;
+    margin-bottom: 20px;
+    width: 200px;
+    /* padding-left: 10px; */
+}
+
+.inputGenreAddForm{
+    /* background-color: yellow; */
+    color: black;
+    /* font-weight: bolder; */
+}
+.lineGenre{
+    height: 1px;
+    margin-left: 25px;
+    width: 600px;
+
+    background-color: rgb(0, 0, 0);
+}
+.h1GenreAddForm{
+    font-size: 30px;
+    /* background-color: blue; */
+    margin-left: 250px;
+}

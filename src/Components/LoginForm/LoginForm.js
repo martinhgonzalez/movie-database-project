@@ -36,23 +36,7 @@ class LoginForm extends React.Component {
                 <label htmlFor="email">E-mail</label>
               </div>
             </div>
-            {/* Alis */}
-            <div className="row">
-              <div className="input-field col s6 ">
-                <i className="material-icons prefix ">account_circle</i>
-                <input
-                  id="icon_prefix"
-                  type="text"
-                  name="name"
-                  value={this.props.formLogin.nameUser}
-                  onChange={this.props.onChange}
-                  className="validate "
-                />
-                {/* <input type="text" name ="taskDescription" className="formLogin-control" value={this.props.formLogin.taskDescription} onChange={this.props.onChange}></input> */}
-
-                <label htmlFor="icon_prefix ">Alias</label>
-              </div>
-            </div>
+            
             {/* Password */}
             <div className="row">
               <div className="input-field col s6">
@@ -69,7 +53,7 @@ class LoginForm extends React.Component {
               </div>
             </div>
             <button
-              className="btn waves-effect "
+              className="btnLogin btn waves-effect "
               type="submit"
               value="Submit"
               name="action"

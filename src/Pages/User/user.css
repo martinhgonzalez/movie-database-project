@@ -1,0 +1,17 @@
+.h1User{
+    text-align: center;
+    margin: 30px;
+    margin-left: 40%;
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    background-color: rgba(219, 186, 155, 0.3);
+    width: 400px;
+    height: 100px;
+    padding-top:20px;
+    border-radius: 14px 14px 14px 14px;
+    -moz-border-radius: 14px 14px 14px 14px;
+    -webkit-border-radius: 14px 14px 14px 14px;
+    border: 1px solid #000000;
+    /* opacity: 0.3    ; */
+}
