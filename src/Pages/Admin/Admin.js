@@ -36,27 +36,29 @@ class Admin extends React.Component {
 
     return (
       <>
-        <h1 class=" h1Admin center-align">Welcome Admin</h1>
-        <span class="logout">
-          <a
+        <h1 className=" h1Admin center-align">Welcome Admin</h1>
+        <span className="logout">
+          <button
             className=" grey darken-3 btn-small "
             onClick={() => {
               this.setState({ loggingOut: true });
             }}
           >
-            <i class="material-icons left">vpn_key</i>
+            <i className="material-icons left">vpn_key</i>
             Logout
-          </a>
+          </button>
         </span>
-        <span onClick={() => this.onClickBtn("api")}
-            className="but btn-large waves-effect waves-light #212121 grey darken-4" >
-            ADD MOVIES FROM API
-
+        <span
+          onClick={() => this.onClickBtn("api")}
+          className="but btn-large waves-effect waves-light #212121 grey darken-4"
+        >
+          ADD MOVIES FROM API
         </span>
 
         <span
           onClick={() => this.onClickBtn("custom")}
-          value="custom" className=" but waves-effect waves-light btn-large #212121 grey darken-4"
+          value="custom"
+          className=" but waves-effect waves-light btn-large #212121 grey darken-4"
         >
           ADD CUSTOM MOVIE
         </span>
