@@ -14,10 +14,11 @@ body{
     
     margin-top: 8%;
 }
+
 .h1Admin{
     text-align: center;
     margin: 30px;
-    margin-left: 600px;
+    margin-left: 33%;
     font-size: 50px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-style: italic;
@@ -36,5 +37,40 @@ body{
   display: inline-block;
   width: 100vw;
   text-align: right;
+  margin-left: 10px;
 }
 
+
+@media screen and (max-width:640px) {
+    .but{
+        margin-left: 25%;
+    }
+    .h1Admin{
+        margin-left: 2%;
+    }
+    .logout { 
+        width: 200px;
+        margin-left: 25%;
+      }
+
+  }
+  
+  @media screen and (max-width:1024px) and (min-width:640px) {
+    .logout { 
+        width: 200px;
+        margin-left: 40%;
+        }  
+
+    .h1Admin{
+        margin-left: 25%;
+    }
+}
+    /* reglas CSS */
+@media screen and (min-width:1024px) {
+    /* reglas CSS */
+    .logout { 
+        width: 200px;
+        margin-left: 40%;
+    }
+  
+}
