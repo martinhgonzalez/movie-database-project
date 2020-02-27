@@ -215,10 +215,13 @@ class User extends React.Component {
           onHandleSubmit={this.handleSubmit} // the function to handle the search submit
           onSelectedGenreFilter={this.selectedGenreFilter} //function to respond to the click event on genres on Nav
         />
-
-        <CardContainer
-          filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
-        />
+        <div className="cardContainer container">
+          <div className="row">
+            <CardContainer
+              filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
+            />
+          </div>
+        </div>
       </>
     );
   }

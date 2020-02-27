@@ -82,14 +82,12 @@ class Nav extends React.Component {
               <li>
                 <form onSubmit={this.submitedSearch}>
                   <input
+                    required
                     id="first_name2"
                     type="text"
                     className="validate #bcaaa4 brown lighten-3"
                     placeholder="Search"
                   />
-                  <button type="submit" className="btn btn-primary">
-                    Submit
-                  </button>
                 </form>
               </li>
 

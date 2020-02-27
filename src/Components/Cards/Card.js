@@ -40,7 +40,7 @@ class Card extends React.Component {
         <div class="row">
           <div class="col s8 offset-s4">
             <div class="col s6">
-              <div className="card teal #424242 grey darken-3">
+              <div className=" movieCard card teal #424242 grey darken-3">
                 <div className="card-image waves-effect waves-block waves-light">
                   <img className="activator" src={url + this.props.imageUrl} />
                 </div>
