@@ -20,8 +20,8 @@ class AddForm extends React.Component {
       return (
         <>
           <p>
-            <label>
-              <input
+            <label className="inputGenreAddForm">
+              <input 
                 checked={this.isChecked(genre.id)}
                 value={genre.id}
                 onChange={this.checkedHandler}
@@ -99,10 +99,11 @@ class AddForm extends React.Component {
   render() {
     return (
       <>
-        <h2>Add your custom Movie:</h2>
-        <form onSubmit={this.handleSubmit}>
+      
+        <form onSubmit={this.handleSubmit} className="formApi">
+        <h2 className="h2AddForm">Add your custom Movie</h2>
           <div className="row">
-            <div className="input-field col s6">
+            <div className="inputAddForm input-field col s6">
               <input
                 name="title"
                 onChange={this.inputHandler}
@@ -111,8 +112,9 @@ class AddForm extends React.Component {
                 id="first_name2"
                 type="text"
                 className="validate"
+
               />
-              <label className="active" htmlFor="first_name2">
+              <label className="nameOfInput" htmlFor="first_name2">
                 Title
               </label>
             </div>
@@ -128,7 +130,7 @@ class AddForm extends React.Component {
                 type="text"
                 className="validate"
               />
-              <label className="active" htmlFor="first_name2">
+              <label className="nameOfInput" htmlFor="first_name2">
                 Overview
               </label>
             </div>
@@ -144,7 +146,7 @@ class AddForm extends React.Component {
                 type="text"
                 className="validate"
               />
-              <label className="active" htmlFor="first_name2">
+              <label className="nameOfInput" htmlFor="first_name2">
                 Release Date
               </label>
             </div>
@@ -160,7 +162,7 @@ class AddForm extends React.Component {
                 type="text"
                 className="validate"
               />
-              <label className="active" htmlFor="first_name2">
+              <label className="nameOfInput" htmlFor="first_name2">
                 id
               </label>
             </div>
@@ -176,18 +178,25 @@ class AddForm extends React.Component {
                 type="text"
                 className="validate"
               />
-              <label className="active" htmlFor="first_name2">
+              <label className="nameOfInput" htmlFor="first_name2">
                 Img Url
               </label>
             </div>
           </div>
           <div className="row">
-            <p>Genres</p>
+            <div className="lineGenre"> </div>
+            <h3 className="h1GenreAddForm">Genres</h3>
             {this.genreCheckboxDisplay()}
           </div>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="butSubmitAddForm btn-large waves-effect waves-light #212121 grey darken-4" />
+          
+
+          
         </form>
+            
       </>
+
+      
     );
   }
 }

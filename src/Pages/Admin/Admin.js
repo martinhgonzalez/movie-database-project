@@ -32,13 +32,13 @@ class Admin extends React.Component {
       <>
         <h1 class="center-align">WELCOME ADMIN</h1>
           <span onClick={() => this.onClickBtn("api")}
-            className="waves-effect waves-light btn-large #212121 grey darken-4" >
+            className="but btn-large waves-effect waves-light #212121 grey darken-4" >
             ADD MOVIES FROM API
         </span>
 
         <span
           onClick={() => this.onClickBtn("custom")}
-          value="custom" className="waves-effect waves-light btn-large #212121 grey darken-4"
+          value="custom" className=" but waves-effect waves-light btn-large #212121 grey darken-4"
         >
           ADD CUSTOM MOVIE
         </span>

@@ -1,0 +1,63 @@
+
+.conteinerMenuAddFromApi{
+    background-color: rgba(187,175,153, 0.8);
+    margin-left: 380px;
+    width: 1100px;
+    margin-top: 60px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    border-radius: 38px 38px 38px 38px;
+    border-radius: 38px 38px 38px 38px;
+    -webkit-border-radius: 38px 38px 38px 38px;
+    border: 1px solid #000000;
+    
+}
+.btn{
+    
+    width: 500px;
+    height: 60px;
+    margin-left: 10px;
+    margin-top: 5px;
+    background-color: #b0bec5 ;
+    color: #b0bec5;
+    
+} 
+
+
+.btnMenuAdFromApi{
+    background-color: rgb(182, 173, 153);
+    
+    
+}
+.search{
+    color:white;
+    width: 2000px;
+    background-color: black;
+    /* background-color: lawngreen; */
+}
+.divSearch{
+    margin-top: 20px;
+    margin-left: 20px;
+    color:white;
+    background-color: rgb(46, 18, 18);
+    padding: 200px;
+
+}
+
+
+.submitBtn{
+    margin-left:  47%;
+    margin-top: -76px;
+    
+}
+.rowMenuAddFromApi{
+    margin: 0, auto;
+    padding: 0, auto;
+    /* display: inline-block; */
+}
+
+.rowSubmit {
+    margin-left: 35%;
+
+}

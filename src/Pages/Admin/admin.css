@@ -1,15 +1,14 @@
 body{
     background-image: url("../background.jpg");
+    background-attachment: fixed;
 }
 
-.btn{
-    
-    width: 500px;
-    height: 60px;
-    margin: auto;
+.but{
+    margin-left: 43%;
+    width: 200px;
     margin-top: 5px;
-    
 }
 .divButtons{
+    
     margin-top: 8%;
 }
