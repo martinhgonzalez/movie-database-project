@@ -79,15 +79,22 @@ class Nav extends React.Component {
                   <input
                     id="first_name2"
                     type="text"
-                    className="validate #bcaaa4 brown lighten-3"
+                    className="inputNav validate #bcaaa4 brown lighten-3"
                     placeholder="Search"
                   />
-                  <button type="submit" className="btn btn-primary">
+                
+                
+                </form>
+                </li>
+                <div className="divNavOptions">
+
+                <li>
+                <div className="searchNav">
+                  <button type="submit" className="buttonNav #ffffff white btn btn-primary">
                     Submit
                   </button>
-                </form>
+                  </div>
               </li>
-
               <li>
                 <a
                   onClick={() => {
@@ -146,6 +153,7 @@ class Nav extends React.Component {
                   {this.iterateGenres()}
                 </select>
               </li>
+              </div>
             </ul>
             <div class="center-align">{this.filterName()}</div>
           </div>

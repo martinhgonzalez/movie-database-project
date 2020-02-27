@@ -3,3 +3,17 @@
     color: white;
     margin-top: 10px;
 }
+
+.buttonNav{
+    color: black;
+    height: 40px;
+    width: 83px;
+    margin-top:-1px;
+}
+
+
+.divNavOptions{
+    width: 1000px;
+    height: 60px;
+    margin-left: 100px;
+}

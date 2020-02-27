@@ -4,11 +4,30 @@ body{
 }
 
 .but{
-    margin-left: 43%;
-    width: 200px;
-    margin-top: 5px;
+    margin-left: 40%;
+    width: 300px;
+    height: 100px;
+    margin-top: 30px;
+    padding-top: 23px;
 }
 .divButtons{
     
     margin-top: 8%;
+}
+.h1Admin{
+    text-align: center;
+    margin: 30px;
+    margin-left: 600px;
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    background-color: rgba(219, 186, 155, 0.3);
+    width: 600px;
+    height: 100px;
+    padding-top:20px;
+    border-radius: 14px 14px 14px 14px;
+    -moz-border-radius: 14px 14px 14px 14px;
+    -webkit-border-radius: 14px 14px 14px 14px;
+    border: 1px solid #000000;
+    /* opacity: 0.3    ; */
 }
