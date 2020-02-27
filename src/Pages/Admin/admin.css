@@ -1,15 +1,19 @@
-body{
-    background-image: url("../background.jpg");
+body {
+  background-image: url("../background.jpg");
 }
 
-.btn{
-    
-    width: 500px;
-    height: 60px;
-    margin: auto;
-    margin-top: 5px;
-    
+.btn {
+  width: 500px;
+  height: 60px;
+  margin: auto;
+  margin-top: 5px;
 }
-.divButtons{
-    margin-top: 8%;
+.divButtons {
+  margin-top: 8%;
+}
+
+.logout {
+  display: inline-block;
+  width: 100vw;
+  text-align: right;
 }
