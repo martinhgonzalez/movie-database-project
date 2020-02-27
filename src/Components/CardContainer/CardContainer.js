@@ -16,7 +16,7 @@ function CardContainer({ filteredMovies }) {
           <br />
           <br />
 
-          <h4 class="center-align">{filteredMovies}</h4>
+          <h4 className="center-align">{filteredMovies}</h4>
         </>
       );
     }
