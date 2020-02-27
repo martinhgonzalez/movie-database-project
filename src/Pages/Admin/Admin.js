@@ -30,13 +30,19 @@ class Admin extends React.Component {
   };
 
   render() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    if (JSON.parse(loggedUser.type !== 1)) {
+      alert("Oops!\nPlease login as an admin first:");
+      return <Redirect to={"/login"} />;
+    }
+
     if (this.state.loggingOut === true) {
       return <Redirect to={"/login"} />;
     }
 
     return (
       <>
-        <h1 className=" h1Admin center-align">Welcome Admin</h1>
+        <h1 className=" h1Admin center-align">Welcome {loggedUser.name}</h1>
         <span className="logout">
           <button
             className=" grey darken-3 btn-small "

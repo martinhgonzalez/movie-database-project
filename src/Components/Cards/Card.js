@@ -3,7 +3,10 @@ import "./card.css";
 
 class Card extends React.Component {
   addFav = () => {
-    let favorites = JSON.parse(localStorage.getItem("user1Favorites"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let favorites = JSON.parse(
+      localStorage.getItem(`${loggedUser.name} favorites`)
+    );
     const index = favorites.indexOf(this.props.id);
 
     if (index > -1) {
@@ -11,21 +14,25 @@ class Card extends React.Component {
 
       favorites.splice(index, 1);
       this.setState({ favorites: favorites });
-      // alert(
-      //   `${this.props.title}\n\nRemoved succesfully to your favorite list!`
-      // );
-      localStorage.setItem("user1Favorites", JSON.stringify(favorites));
+      localStorage.setItem(
+        `${loggedUser.name} favorites`,
+        JSON.stringify(favorites)
+      );
     } else {
       favorites.push(this.props.id);
 
       this.setState({ favorites: favorites });
-
-      // alert(`${this.props.title}\n\nAdded succesfully to your favorite list!`);
-      localStorage.setItem("user1Favorites", JSON.stringify(favorites));
+      localStorage.setItem(
+        `${loggedUser.name} favorites`,
+        JSON.stringify(favorites)
+      );
     }
   };
   favoriteIcon = () => {
-    let favorites = JSON.parse(localStorage.getItem("user1Favorites"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let favorites = JSON.parse(
+      localStorage.getItem(`${loggedUser.name} favorites`)
+    );
     const index = favorites.indexOf(this.props.id);
 
     if (index > -1) {
