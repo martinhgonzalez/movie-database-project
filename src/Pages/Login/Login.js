@@ -13,6 +13,10 @@ class Login extends React.Component {
     };
   }
 
+  componentDidMount() {
+    localStorage.setItem("loggedUser", JSON.stringify({ type: 0, name: "" }));
+  }
+
   handleInputChange = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -47,22 +51,38 @@ class Login extends React.Component {
         this.state.formLogin.mail === "admin@admin.com" &&
         this.state.formLogin.pass === "admin"
       ) {
+        localStorage.setItem(
+          "loggedUser",
+          JSON.stringify({ type: 1, name: "admin" })
+        );
         return <Redirect to={"/admin"} />;
       } else if (
         this.state.formLogin.mail === "user@user.com" &&
         this.state.formLogin.pass === "user"
       ) {
+        localStorage.setItem(
+          "loggedUser",
+          JSON.stringify({ type: 2, name: "user" })
+        );
         return <Redirect to={"/user"} />;
       } else if (
         this.state.formLogin.mail === "jazmin@user.com" &&
         this.state.formLogin.pass === "jazmin"
       ) {
+        localStorage.setItem(
+          "loggedUser",
+          JSON.stringify({ type: 2, name: "jazmin" })
+        );
         return <Redirect to={"/user"} />;
       } else if (
-        this.state.formLogin.mail === "martin@admin.com" &&
+        this.state.formLogin.mail === "martin@user.com" &&
         this.state.formLogin.pass === "martin"
       ) {
-        return <Redirect to={"/admin"} />;
+        localStorage.setItem(
+          "loggedUser",
+          JSON.stringify({ type: 2, name: "martin" })
+        );
+        return <Redirect to={"/user"} />;
       } else {
         return <Redirect to={"/signin"} />;
       }
