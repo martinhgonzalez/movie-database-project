@@ -1,15 +1,35 @@
-body {
-  background-image: url("../background.jpg");
+body{
+    background-image: url("../background.jpg");
+    background-attachment: fixed;
 }
 
-.btn {
-  width: 500px;
-  height: 60px;
-  margin: auto;
-  margin-top: 5px;
+.but{
+    margin-left: 40%;
+    width: 300px;
+    height: 100px;
+    margin-top: 30px;
+    padding-top: 23px;
 }
-.divButtons {
-  margin-top: 8%;
+.divButtons{
+    
+    margin-top: 8%;
+}
+.h1Admin{
+    text-align: center;
+    margin: 30px;
+    margin-left: 600px;
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    background-color: rgba(219, 186, 155, 0.3);
+    width: 600px;
+    height: 100px;
+    padding-top:20px;
+    border-radius: 14px 14px 14px 14px;
+    -moz-border-radius: 14px 14px 14px 14px;
+    -webkit-border-radius: 14px 14px 14px 14px;
+    border: 1px solid #000000;
+    /* opacity: 0.3    ; */
 }
 
 .logout {
@@ -17,3 +37,4 @@ body {
   width: 100vw;
   text-align: right;
 }
+

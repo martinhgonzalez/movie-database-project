@@ -42,7 +42,11 @@ class Card extends React.Component {
             <div class="col s6">
               <div className=" movieCard card teal #424242 grey darken-3">
                 <div className="card-image waves-effect waves-block waves-light">
-                  <img className="activator" src={url + this.props.imageUrl} />
+                  <img
+                    className="activator"
+                    src={url + this.props.imageUrl}
+                    alt=""
+                  />
                 </div>
                 <div className="card-content #424242 grey darken-3">
                   <span className="card-title activator  center-align ">
@@ -57,12 +61,12 @@ class Card extends React.Component {
                     <i className="material-icons right">close</i>
                   </span>
                   <p id="colorP"> {this.props.description}</p>
-                  <a
+                  <button
                     onClick={this.addFav}
                     className="btn-floating btn-large waves-effect waves-light #212121 grey darken-4 right"
                   >
                     <i className="material-icons">{this.favoriteIcon()}</i>
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

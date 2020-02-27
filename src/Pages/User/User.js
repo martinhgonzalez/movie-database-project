@@ -208,7 +208,7 @@ class User extends React.Component {
   render() {
     return (
       <>
-        <h1>Welcome User!</h1>
+        <h1 className="h1User">Welcome User!</h1>
         <Nav
           filter={this.state.filter} //prop to set the msg of the right (current filter)
           onClickedFilter={this.clickedFilter} //function to respond to the click event on Nav ALL, LATEST

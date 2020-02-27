@@ -34,7 +34,11 @@ class Nav extends React.Component {
 
   iterateGenres = () => {
     return this.state.genres.map(genre => {
-      return <option value={genre.id}>{genre.name}</option>;
+      return (
+        <option key={genre.id} value={genre.id}>
+          {genre.name}
+        </option>
+      );
     });
   };
 
@@ -85,92 +89,102 @@ class Nav extends React.Component {
                     required
                     id="first_name2"
                     type="text"
-                    className="validate #bcaaa4 brown lighten-3"
+                    className="inputNav validate #bcaaa4 brown lighten-3"
                     placeholder="Search"
                   />
                 </form>
               </li>
+              <div className="divNavOptions">
+                <li>
+                  <div className="searchNav">
+                    <button
+                      type="submit"
+                      className="buttonNav #ffffff white btn btn-primary"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </li>
+                <li>
+                  <button
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
+                      this.selectedFilter("all");
+                    }}
+                  >
+                    All
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
+                      this.selectedFilter("new");
+                    }}
+                  >
+                    On Screen
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
+                      this.selectedFilter("favorite");
+                    }}
+                  >
+                    Favorite
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
+                      this.selectedFilter("popular");
+                    }}
+                  >
+                    Popular
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
+                      this.selectedFilter("upcoming");
+                    }}
+                  >
+                    Upcoming
+                  </button>
+                </li>
 
-              <li>
-                <a
-                  className="grey darken-3 btn-small "
-                  onClick={() => {
-                    this.selectedFilter("all");
-                  }}
-                >
-                  All
-                </a>
-              </li>
-              <li>
-                <a
-                  className="grey darken-3 btn-small "
-                  onClick={() => {
-                    this.selectedFilter("new");
-                  }}
-                >
-                  On Screen
-                </a>
-              </li>
-              <li>
-                <a
-                  className="grey darken-3 btn-small "
-                  onClick={() => {
-                    this.selectedFilter("favorite");
-                  }}
-                >
-                  Favorite
-                </a>
-              </li>
-              <li>
-                <a
-                  className="grey darken-3 btn-small "
-                  onClick={() => {
-                    this.selectedFilter("popular");
-                  }}
-                >
-                  Popular
-                </a>
-              </li>
-              <li>
-                <a
-                  className="grey darken-3 btn-small "
-                  onClick={() => {
-                    this.selectedFilter("upcoming");
-                  }}
-                >
-                  Upcoming
-                </a>
-              </li>
-
-              <li>
-                <select
-                  onChange={this.onSelectChange}
-                  value={this.state.selection}
-                  class="browser-default"
-                >
-                  <option value="0" disabled>
-                    Genres
-                  </option>
-                  {this.iterateGenres()}
-                </select>
-              </li>
-
-              <li>
-                <div className=" filterName center-align">
-                  {this.filterName()}
-                </div>
-              </li>
-              <li>
-                <a
-                  className="grey darken-3 btn-small "
-                  onClick={() => {
-                    this.setState({ loggingOut: true });
-                  }}
-                >
-                  <i class="material-icons left">vpn_key</i>
-                  Logout
-                </a>
-              </li>
+                <li>
+                  <select
+                    onChange={this.onSelectChange}
+                    value={this.state.selection}
+                    className="browser-default"
+                  >
+                    <option value="0" disabled>
+                      Genres
+                    </option>
+                    {this.iterateGenres()}
+                  </select>
+                </li>
+                <li>
+                  <div className=" filterName center-align">
+                    {this.filterName()}
+                  </div>
+                </li>
+                <li>
+                  <button
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
+                      this.setState({ loggingOut: true });
+                    }}
+                  >
+                    <i className="material-icons left">vpn_key</i>
+                    Logout
+                  </button>
+                </li>
+              </div>
             </ul>
           </div>
         </nav>
