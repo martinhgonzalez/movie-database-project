@@ -37,10 +37,10 @@ class Card extends React.Component {
 
     return (
       <>
-        <div className="row">
-          <div className="col s8 offset-s4">
-            <div className="col s6">
-              <div className="card teal #424242 grey darken-3">
+        <div class="row">
+          <div class="col s8 offset-s4">
+            <div class="col s6">
+              <div className=" movieCard card teal #424242 grey darken-3">
                 <div className="card-image waves-effect waves-block waves-light">
                   <img
                     className="activator"

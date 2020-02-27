@@ -1,3 +1,7 @@
+.cardContainer {
+  position: relative;
+  right: 8vw;
+}
 .h1User{
     text-align: center;
     margin: 30px;

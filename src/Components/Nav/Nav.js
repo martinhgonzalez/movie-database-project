@@ -86,6 +86,7 @@ class Nav extends React.Component {
               <li>
                 <form onSubmit={this.submitedSearch}>
                   <input
+                    required
                     id="first_name2"
                     type="text"
                     className="inputNav validate #bcaaa4 brown lighten-3"
