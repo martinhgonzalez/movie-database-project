@@ -17,5 +17,16 @@
     -moz-border-radius: 14px 14px 14px 14px;
     -webkit-border-radius: 14px 14px 14px 14px;
     border: 1px solid #000000;
-    /* opacity: 0.3    ; */
+}
+
+@media screen and (max-width:640px) {
+    .h1User{
+        margin-left: 15%;
+    }
+}
+
+@media screen and (max-width:1024px) and (min-width:640px) {
+    .h1User{
+        margin-left: 25%;
+    }
 }

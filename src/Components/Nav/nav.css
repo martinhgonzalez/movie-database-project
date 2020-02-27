@@ -21,7 +21,51 @@ a:hover {
 
 
 .divNavOptions{
-    width: 1000px;
+    width: 1600px;
     height: 60px;
     margin-left: 100px;
 }
+.logNav{
+  margin-right: 20%;
+  background-color: brown;
+
+}
+
+.filterName{
+
+  width: 150px;
+  margin-left: 200px;
+  margin-right: 20px;
+  
+}
+
+@media screen and (max-width:640px) {
+
+  .navBarNav{
+    width: 180px;
+
+  }
+  .divNavOptions{
+    background-color: #252121;
+    margin-left: 0;
+    height: 180px;
+    width: 620px;
+
+  }
+
+  .filterName{
+    width: 150px;
+    margin: 0;  
+  }
+}
+
+@media screen and (max-width:1024px) and (min-width:640px) {
+  
+  .divNavOptions{
+    background-color:  #252121;;
+    height: 120px;
+    margin-left: 2px;
+    width: 1020px;
+  }
+}
+

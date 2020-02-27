@@ -45,7 +45,7 @@ function MenuAddFromAPI(props) {
           <div class="col s3">
             <button
               onClick={() => handleClick("nowPlaying")}
-              className="btn #546e7a blue-grey darken-1 waves-effect waves-light "
+              className="btn col s8 m10   #546e7a blue-grey darken-1 waves-effect waves-light "
               type="submit"
               name="action"
               >Now Playing
@@ -56,7 +56,7 @@ function MenuAddFromAPI(props) {
           <div class="col s3">
             <button
               onClick={() => handleClick("popular")}
-              className="btn #546e7a blue-grey darken-1 waves-effect waves-light"
+              className="btn col s8 m10 #546e7a blue-grey darken-1 waves-effect waves-light"
               type="submit"
               name="action"
               >Popular
@@ -67,7 +67,7 @@ function MenuAddFromAPI(props) {
           <div class="col s3">
             <button
               onClick={() => handleClick("topRated")}
-              className="btn waves-effect waves-light #546e7a blue-grey darken-1"
+              className="btn col s8 m10 waves-effect waves-light #546e7a blue-grey darken-1"
               type="submit"
               name="action"
               >Top Rated
@@ -78,7 +78,7 @@ function MenuAddFromAPI(props) {
           <div class="col s3">
             <button
               onClick={() => handleClick("upcoming")}
-              className="btn waves-effect waves-light #546e7a blue-grey darken-1 "
+              className="btn col s8 m10 waves-effect waves-light #546e7a blue-grey darken-1 "
               type="submit"
               name="action"
               >Upcoming
@@ -101,7 +101,7 @@ function MenuAddFromAPI(props) {
             
               </div>
             
-              <button type="submit" className="submitBtn btn  waves-effect waves-light #546e7a blue-grey darken-1">
+              <button type="submit" className="submitBtn btn   waves-effect waves-light #546e7a blue-grey darken-1">
                 Submit
               </button>
             </form>

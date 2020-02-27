@@ -15,14 +15,13 @@
   border: 2px solid #251c1c;
   text-align: center;
 }
-/* Este cambia el color del label del campo cuando no está seleccionado */
+
 .input-field label {
-  color: #251c1c; /* Donde dice #000 pones el color que quieres */
+  color: #251c1c; 
 }
 
-/* Pôr último, este cambia el color al ícono cuando entras a un campo */
 .input-field .prefix.active {
-  color: #251c1c; /* También quieres cambiar esto a otro color, o no? */
+  color: #251c1c; 
 }
 
 .btn {
@@ -39,7 +38,6 @@
   height: 5vh;
 }
 
-/* Change the white to any color ;) */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

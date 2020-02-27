@@ -81,8 +81,9 @@ class Nav extends React.Component {
     return (
       <>
         <nav>
-          <div className="nav-wrapper">
-            <ul id="nav-mobile" className="left hide-on-med-and-down">
+
+          <div className="navBarNav nav-wrapper ">
+            <ul id="nav-mobile" className=" navBarNav ">
               <li>
                 <form onSubmit={this.submitedSearch}>
                   <input
@@ -94,101 +95,99 @@ class Nav extends React.Component {
                   />
                 </form>
               </li>
-              <div className="divNavOptions">
-                <li>
-                  <div className="searchNav">
-                    <button
-                      type="submit"
-                      className="buttonNav #ffffff white btn btn-primary"
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </li>
-                <li>
-                  <button
-                    className="grey darken-3 btn-small "
-                    onClick={() => {
+      <div className="  divNavOptions">
+                  <li>
+                    <div className="searchNav">
+                      <button type="submit" className="  buttonNav #ffffff white btn btn-primary">
+                        Submit
+                      </button>
+                    </div>
+                  </li>
+                  <li>
+                    <a
+                      className="grey darken-3 btn-small "
+                      onClick={() => {
                       this.selectedFilter("all");
                     }}
-                  >
-                    All
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="grey darken-3 btn-small "
-                    onClick={() => {
-                      this.selectedFilter("new");
+                    >All
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="grey darken-3 btn-small "
+                      onClick={() => {
+                        this.selectedFilter("new");
+                      }}
+                    >On Screen
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="grey darken-3 btn-small "
+                      onClick={() => {
+                        this.selectedFilter("favorite");
                     }}
-                  >
-                    On Screen
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="grey darken-3 btn-small "
-                    onClick={() => {
-                      this.selectedFilter("favorite");
-                    }}
-                  >
-                    Favorite
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="grey darken-3 btn-small "
-                    onClick={() => {
+                    >Favorite
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="grey darken-3 btn-small "
+                      onClick={() => {
                       this.selectedFilter("popular");
                     }}
-                  >
-                    Popular
-                  </button>
-                </li>
-                <li>
-                  <button
-                    className="grey darken-3 btn-small "
-                    onClick={() => {
+                    >Popular
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      className="grey darken-3 btn-small "
+                      onClick={() => {
                       this.selectedFilter("upcoming");
                     }}
-                  >
-                    Upcoming
-                  </button>
-                </li>
+                    >Upcoming
+                    </a>
+                  </li>
 
-                <li>
-                  <select
-                    onChange={this.onSelectChange}
-                    value={this.state.selection}
-                    className="browser-default"
-                  >
+                  <li>
+                    <select
+                      onChange={this.onSelectChange}
+                      value={this.state.selection}
+                      class="browser-default"
+                    >
                     <option value="0" disabled>
                       Genres
                     </option>
-                    {this.iterateGenres()}
-                  </select>
-                </li>
-                <li>
-                  <div className=" filterName center-align">
-                    {this.filterName()}
+                      {this.iterateGenres()}
+                    </select>
+                  </li>
+                  
+                  <div className="logFilter">
+                    <li>
+                      <div className=" filterName center-align">
+                        {this.filterName()}
+                      </div>
+                    
+                    </li>
+                    
+                    <li>
+                      <a
+                        className="grey darken-3 btn-small "
+                        onClick={() => {
+                        this.setState({ loggingOut: true });
+                      }}
+                    >
+                      <i class="material-icons left">vpn_key</i>
+                      Logout
+                      </a>
+                    </li>
                   </div>
-                </li>
-                <li>
-                  <button
-                    className="grey darken-3 btn-small "
-                    onClick={() => {
-                      this.setState({ loggingOut: true });
-                    }}
-                  >
-                    <i className="material-icons left">vpn_key</i>
-                    Logout
-                  </button>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </nav>
-      </>
+                      
+                  </div>
+              </ul>
+            </div>
+          </nav>
+        </>
     );
   }
 }
