@@ -86,6 +86,8 @@ class Nav extends React.Component {
           <div className="navBarNav nav-wrapper ">
             <ul id="nav-mobile" className=" navBarNav ">
               <li>
+
+
                 <form onSubmit={this.submitedSearch}>
                   <input
                     required
@@ -93,18 +95,23 @@ class Nav extends React.Component {
                     type="text"
                     className="inputNav validate #bcaaa4 brown lighten-3"
                     placeholder="Search"
-                  />
-                </form>
-                </li>
-                <div className="divNavOptions">
-
-                  <li>
+                  />                  
+                
                     <div className="searchNav">
                       <button type="submit" className="buttonNav waves-effect waves-brown btn">
                         SUBMIT
                       </button>
                     </div>
-                  </li>
+                
+                </form>
+                
+                
+                
+                
+                </li>
+                <div className="divNavOptions">
+
+                  
                   <li>
                     <a
                       className="grey darken-3 btn-small "

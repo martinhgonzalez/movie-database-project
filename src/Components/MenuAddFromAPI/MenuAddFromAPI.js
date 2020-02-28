@@ -95,15 +95,15 @@ function MenuAddFromAPI(props) {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div className="rowSubmit row">
+          <div className="rowSubmit required row">
             <div className="divSearch col s2">
-              <input id="first_name2" type="text" className="search" placeholder="Search" />
+              <input id="first_name2" type="text" className="search required" placeholder="Search" />
             </div>
           </div>
 
           <button
             type="submit"
-            className="submitBtn btn waves-effect waves-light #546e7a blue-grey darken-1"
+            className="submitBtn required btn waves-effect waves-light #546e7a blue-grey darken-1"
           >
             Submit
           </button>

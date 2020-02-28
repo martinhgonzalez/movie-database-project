@@ -12,16 +12,9 @@ a:hover {
   margin: auto 10rem;
 }
 
-/* .searchNav{
-  width: 60px;
-  background-color: rgb(82, 78, 78);
-  margin-left: 20px;
-  border-radius: 6px 6px 6px 6px;
-  -moz-border-radius: 6px 6px 6px 6px;
-  -webkit-border-radius: 6px 6px 6px 6px;
-  margin-right: 15px;
-
-} */
+.searchNav{
+  width: 83px;
+}   
 
 .buttonNav{
     color: rgb(0, 0, 0);
@@ -29,8 +22,8 @@ a:hover {
     width: 83px;
     height: 40px;
     line-height: 40px;
-    margin-left: 20px;
-    margin-top: -1px;
+    margin-left: 260px;
+    margin-top: -130px;
     border-radius: 6px 6px 6px 6px;
     -moz-border-radius: 6px 6px 6px 6px;
     -webkit-border-radius: 6px 6px 6px 6px;
@@ -41,7 +34,7 @@ a:hover {
 .divNavOptions{
     width: 1600px;
     height: 60px;
-    margin-left: 100px;
+    margin-left: 340px;
 }
 
 button.buttonNav:hover {
@@ -49,7 +42,7 @@ button.buttonNav:hover {
   }
 
   button.buttonNav:focus {
-    background-color: #969088; 
+    background-color: #b6acac; 
     } 
 
 .logNav{

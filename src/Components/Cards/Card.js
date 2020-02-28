@@ -33,11 +33,11 @@ class Card extends React.Component {
     let favorites = JSON.parse(
       localStorage.getItem(`${loggedUser.name} favorites`)
     );
-    const index = favorites.indexOf(this.props.id);
+    // const index = favorites.indexOf(this.props.id);
 
-    if (index > -1) {
-      return "favorite";
-    } else return "favorite_border";
+    // if (index > -1) {
+    //   return "favorite";
+    // } else return "favorite_border";
   };
   render() {
     let url = "https://image.tmdb.org/t/p/w500";
