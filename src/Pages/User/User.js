@@ -16,7 +16,7 @@ class User extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     if (!localStorage.getItem(`${this.state.loggedUser.name} favorites`)) {
       localStorage.setItem(`${this.state.loggedUser.name} favorites`, "[]");
     }
@@ -96,17 +96,22 @@ class User extends React.Component {
 
   filterByFav() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    let favorites = JSON.parse(localStorage.getItem(`${this.state.loggedUser.name} favorites`));
-    let filtered = moviesArray.filter(movie => {
-      let flag = false;
-      favorites.forEach(idFav => {
-        if (movie.id === idFav) flag = true;
+    if (moviesArray === null) {
+      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
+      return;
+    } else {
+      let favorites = JSON.parse(localStorage.getItem(`${this.state.loggedUser.name} favorites`));
+      let filtered = moviesArray.filter(movie => {
+        let flag = false;
+        favorites.forEach(idFav => {
+          if (movie.id === idFav) flag = true;
+        });
+        return flag;
       });
-      return flag;
-    });
-    if (filtered.length !== 0) return filtered;
-    else
-      return "Your search criteria didn't match anything. You may try again with a different search";
+      if (filtered.length !== 0) return filtered;
+      else
+        return "Your search criteria didn't match anything. You may try again with a different search";
+    }
   }
 
   filterByPopularity() {
@@ -165,6 +170,8 @@ class User extends React.Component {
   }
 
   getMovies() {
+    console.log("Entrando al getMovies");
+
     if (this.state.genreId !== undefined) {
       return this.filterByGenre();
     }
@@ -215,6 +222,29 @@ class User extends React.Component {
     this.setState({ displayingPage: param });
   };
 
+  displayPagination = () => {
+    if (Array.isArray(this.getMovies()))
+      return (
+        <>
+          <ul className="pagination">
+            <li className="disabled">
+              <a href="#!">
+                <i className="material-icons">chevron_left</i>
+              </a>
+            </li>
+            {this.paginate().map(page => {
+              return page;
+            })}
+            <li className="disabled waves-effect">
+              <a href="#!">
+                <i className="material-icons">chevron_right</i>
+              </a>
+            </li>
+          </ul>
+        </>
+      );
+  };
+
   render() {
     if (JSON.parse(this.state.loggedUser.type !== 2)) {
       alert("Oops!\nPlease login first:");
@@ -238,21 +268,7 @@ class User extends React.Component {
             />
           </div>
         </div>
-        <ul className="pagination">
-          <li className="disabled">
-            <a href="#!">
-              <i className="material-icons">chevron_left</i>
-            </a>
-          </li>
-          {this.paginate().map(page => {
-            return page;
-          })}
-          <li className="disabled waves-effect">
-            <a href="#!">
-              <i className="material-icons">chevron_right</i>
-            </a>
-          </li>
-        </ul>
+        {this.displayPagination()}
       </>
     );
   }
