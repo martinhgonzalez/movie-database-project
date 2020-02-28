@@ -16,15 +16,17 @@ function CardContainer({ filteredMovies }) {
           <br />
           <br />
 
-          <h4 class="center-align">{filteredMovies}</h4>
+          <h4 className="center-align">{filteredMovies}</h4>
         </>
       );
     }
   }
 
   function createCard(movie) {
+    // console.log(movie);
+
     return (
-      <>
+      <div className=" col s4">
         <Card
           imageUrl={movie.poster_path}
           title={movie.title}
@@ -32,7 +34,7 @@ function CardContainer({ filteredMovies }) {
           genres={movie.genres}
           id={movie.id}
         />
-      </>
+      </div>
     );
   }
   return <>{displayCards()}</>;

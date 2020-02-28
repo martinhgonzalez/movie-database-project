@@ -1,15 +1,9 @@
-
 import React from "react";
-// import MenuAddFromAPI from "../Components/MenuAddFromAPI/MenuAddFromAPI";
-// import AddForm from "../Components/addForm/AddForm";
-import './signin.css';
-import { Redirect, Link } from "react-router-dom";
-import Login from '../Login/Login'
-
-
+import "./signin.css";
+import { Redirect } from "react-router-dom";
 
 class Signin extends React.Component {
-    constructor(){
+  constructor(){
         super();
         this.state ={
             login: false, 
@@ -27,12 +21,11 @@ class Signin extends React.Component {
         };
         return (
             <>
-                <p class ='datos-incorrectos'>Los datos ingresados son incorrectos, intente nuevamente</p>
-                <a class="backSignin waves-effect waves-light btn" onClick={this.verifyLog}>Volver al login</a>
+                <p className ='datos-incorrectos'>Los datos ingresados son incorrectos, intente nuevamente</p>
+                <a className="backSignin waves-effect waves-light btn" onClick={this.verifyLog}>Volver al login</a>
             </>
         );
     }
 }
 export default Signin;
-
 

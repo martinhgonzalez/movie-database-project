@@ -10,7 +10,7 @@
      "email": "martin@admin.com",
       "name": "martin",
       "password": "martin",
-      "type" : 1
+      "type" : 2
       },
 
     {

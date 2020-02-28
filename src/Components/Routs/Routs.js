@@ -5,19 +5,9 @@ import User from "../../Pages/User/User";
 import Signin from "../../Pages/Signin/Signin";
 import "./routes.css";
 
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link,
-  withRouter,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class Routs extends React.Component {
-  constructor() {
-    super();
-  }
   render() {
     return (
       <>
