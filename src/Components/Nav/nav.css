@@ -12,11 +12,29 @@ a:hover {
   margin: auto 10rem;
 }
 
+/* .searchNav{
+  width: 60px;
+  background-color: rgb(82, 78, 78);
+  margin-left: 20px;
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  margin-right: 15px;
+
+} */
+
 .buttonNav{
-    color: black;
-    height: 40px;
+    color: rgb(0, 0, 0);
+    background-color: white;
     width: 83px;
-    margin-top:-1px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+    margin-top: -1px;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    
 }
 
 
@@ -25,6 +43,15 @@ a:hover {
     height: 60px;
     margin-left: 100px;
 }
+
+button.buttonNav:hover {
+  background-color: #4b4844; 
+  }
+
+  button.buttonNav:focus {
+    background-color: #969088; 
+    } 
+
 .logNav{
   margin-right: 20%;
   background-color: brown;
@@ -32,7 +59,6 @@ a:hover {
 }
 
 .filterName{
-
   width: 150px;
   margin-left: 200px;
   margin-right: 20px;

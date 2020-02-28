@@ -44,6 +44,7 @@ class Nav extends React.Component {
 
   submitedSearch = e => {
     this.props.onHandleSubmit(e);
+
     this.setState({ selection: 0 });
     e.target.reset();
   };
@@ -94,12 +95,13 @@ class Nav extends React.Component {
                     placeholder="Search"
                   />
                 </form>
-              </li>
-      <div className="  divNavOptions">
+                </li>
+                <div className="divNavOptions">
+
                   <li>
                     <div className="searchNav">
-                      <button type="submit" className="  buttonNav #ffffff white btn btn-primary">
-                        Submit
+                      <button type="submit" className="buttonNav waves-effect waves-brown btn">
+                        SUBMIT
                       </button>
                     </div>
                   </li>
