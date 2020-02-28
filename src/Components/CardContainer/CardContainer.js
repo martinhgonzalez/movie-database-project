@@ -3,11 +3,11 @@ import Card from "../Cards/Card";
 import "./cardContainer.css";
 import { shuffleArray } from "../../Services/ArrayUtils";
 
-function CardContainer({ filteredMovies }) {
+function CardContainer({ filteredMovies, displayingPage }) {
   function displayCards() {
     if (Array.isArray(filteredMovies)) {
-      shuffleArray(filteredMovies);
-      return filteredMovies.map(createCard);
+      let resultFrom = (displayingPage - 1) * 6; //Algorithm to slice in the right position according to the number of page received
+      return filteredMovies.slice(resultFrom, resultFrom + 6).map(createCard);
     } else {
       return (
         <>

@@ -11,16 +11,13 @@ class User extends React.Component {
       filter: "all",
       searching: undefined,
       genreId: undefined,
-      loggedUser: JSON.parse(localStorage.getItem("loggedUser"))
+      loggedUser: JSON.parse(localStorage.getItem("loggedUser")),
+      displayingPage: 1
     };
   }
 
   componentDidMount() {
-    console.log(this.state.loggedUser);
-
     if (!localStorage.getItem(`${this.state.loggedUser.name} favorites`)) {
-      console.log("creandooo");
-
       localStorage.setItem(`${this.state.loggedUser.name} favorites`, "[]");
     }
   }
@@ -147,8 +144,6 @@ class User extends React.Component {
       let filtered = moviesArray.filter(movie => {
         return this.toTimestamp(movie.release_date) > actualTimeStamp;
       });
-      console.log(filtered.length);
-
       if (filtered.length !== 0) {
         return filtered;
       } else {
@@ -191,9 +186,34 @@ class User extends React.Component {
     this.setState({
       filter: undefined,
       searching: undefined,
-      genreId: undefined
+      genreId: undefined,
+      displayingPage: 1
     });
   }
+
+  paginate = () => {
+    let pages = Math.ceil(this.getMovies().length / 6);
+    let pagination = [];
+    for (let i = 0; i < pages; i++) {
+      let num = (
+        <li className={this.state.displayingPage === i + 1 ? "active" : "waves-effect"}>
+          <a
+            onClick={() => {
+              this.pageSelector(i + 1);
+            }}
+          >
+            {i + 1}
+          </a>
+        </li>
+      );
+      pagination.push(num);
+    }
+    return pagination;
+  };
+
+  pageSelector = param => {
+    this.setState({ displayingPage: param });
+  };
 
   render() {
     if (JSON.parse(this.state.loggedUser.type !== 2)) {
@@ -214,9 +234,25 @@ class User extends React.Component {
           <div className="row">
             <CardContainer
               filteredMovies={this.getMovies()} // Array with the movies filtered according to the what was clicked on the nav
+              displayingPage={this.state.displayingPage}
             />
           </div>
         </div>
+        <ul className="pagination">
+          <li className="disabled">
+            <a href="#!">
+              <i className="material-icons">chevron_left</i>
+            </a>
+          </li>
+          {this.paginate().map(page => {
+            return page;
+          })}
+          <li className="disabled waves-effect">
+            <a href="#!">
+              <i className="material-icons">chevron_right</i>
+            </a>
+          </li>
+        </ul>
       </>
     );
   }
