@@ -32,9 +32,12 @@ function MenuAddFromAPI(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    getMoviesBySearch(e.target.firstElementChild.value).then(movies => {
-      props.sendArray(movies);
-    });
+
+    getMoviesBySearch(e.target.firstElementChild.firstElementChild.firstElementChild.value).then(
+      movies => {
+        props.sendArray(movies);
+      }
+    );
     e.target.reset();
   };
 
@@ -48,66 +51,65 @@ function MenuAddFromAPI(props) {
               className="btn col s8 m10   #546e7a blue-grey darken-1 waves-effect waves-light "
               type="submit"
               name="action"
-              >Now Playing
+            >
+              Now Playing
               <i className="material-icons right">send</i>
             </button>
           </div>
-          
+
           <div class="col s3">
             <button
               onClick={() => handleClick("popular")}
               className="btn col s8 m10 #546e7a blue-grey darken-1 waves-effect waves-light"
               type="submit"
               name="action"
-              >Popular
+            >
+              Popular
               <i className="material-icons right">send</i>
             </button>
           </div>
-          
+
           <div class="col s3">
             <button
               onClick={() => handleClick("topRated")}
               className="btn col s8 m10 waves-effect waves-light #546e7a blue-grey darken-1"
               type="submit"
               name="action"
-              >Top Rated
+            >
+              Top Rated
               <i className="material-icons right">send</i>
             </button>
           </div>
-          
+
           <div class="col s3">
             <button
               onClick={() => handleClick("upcoming")}
               className="btn col s8 m10 waves-effect waves-light #546e7a blue-grey darken-1 "
               type="submit"
               name="action"
-              >Upcoming
+            >
+              Upcoming
               <i className="material-icons right">send</i>
             </button>
           </div>
-          
         </div>
-          
-            <form onSubmit={handleSubmit}>
-              <div className="rowSubmit row">
-                <div className="divSearch col s2">
-                  <input
-                    id="first_name2"
-                    type="text"
-                    className="search"
-                    placeholder="Search"
-                  />
-                </div>
-            
-              </div>
-            
-              <button type="submit" className="submitBtn btn waves-effect waves-light #546e7a blue-grey darken-1">
-                Submit
-              </button>
-            </form>
-          
+
+        <form onSubmit={handleSubmit}>
+          <div className="rowSubmit row">
+            <div className="divSearch col s2">
+              <input id="first_name2" type="text" className="search" placeholder="Search" />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="submitBtn btn waves-effect waves-light #546e7a blue-grey darken-1"
+          >
+            Submit
+          </button>
+        </form>
       </div>
-      </>
+    </>
   );
 }
 

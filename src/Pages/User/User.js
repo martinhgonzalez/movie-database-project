@@ -38,7 +38,7 @@ class User extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.resetValues();
+    // this.resetValues(); // Fix because it moves nav elements
     this.setState({ searching: e.target.firstElementChild.value });
   };
 
@@ -46,9 +46,7 @@ class User extends React.Component {
     // Receives the id of the genre and saves it as a state
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert(
-        "There are no movies uploaded yet! Please contact an Admin for further information."
-      );
+      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
       return;
     } else {
       let filtered = moviesArray.filter(movie => {
@@ -64,15 +62,11 @@ class User extends React.Component {
   filterByName = () => {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert(
-        "There are no movies uploaded yet! Please contact an Admin for further information."
-      );
+      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
       return;
     } else {
       let filtered = moviesArray.filter(movie => {
-        return movie.title
-          .toLowerCase()
-          .includes(this.state.searching.toLowerCase());
+        return movie.title.toLowerCase().includes(this.state.searching.toLowerCase());
       });
 
       if (filtered.length !== 0) return filtered;
@@ -83,9 +77,7 @@ class User extends React.Component {
   filterByNew() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert(
-        "There are no movies uploaded yet! Please contact an Admin for further information."
-      );
+      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
       return;
     } else {
       let actualTimeStamp = this.toTimestamp(new Date());
@@ -107,9 +99,7 @@ class User extends React.Component {
 
   filterByFav() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
-    let favorites = JSON.parse(
-      localStorage.getItem(`${this.state.loggedUser.name} favorites`)
-    );
+    let favorites = JSON.parse(localStorage.getItem(`${this.state.loggedUser.name} favorites`));
     let filtered = moviesArray.filter(movie => {
       let flag = false;
       favorites.forEach(idFav => {
@@ -125,9 +115,7 @@ class User extends React.Component {
   filterByPopularity() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert(
-        "There are no movies uploaded yet! Please contact an Admin for further information."
-      );
+      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
       return;
     } else {
       moviesArray.sort(function compare(a, b) {
@@ -152,9 +140,7 @@ class User extends React.Component {
   filterByUpcoming() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert(
-        "There are no movies uploaded yet! Please contact an Admin for further information."
-      );
+      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
       return;
     } else {
       let actualTimeStamp = this.toTimestamp(new Date());
@@ -174,9 +160,7 @@ class User extends React.Component {
   getAllMovies() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert(
-        "There are no movies uploaded yet! Please contact an Admin for further information."
-      );
+      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
       return;
     } else {
       if (moviesArray.length !== 0) return moviesArray;
@@ -212,7 +196,7 @@ class User extends React.Component {
   }
 
   render() {
-    if (JSON.parse(this.state.loggedUser.type === 0)) {
+    if (JSON.parse(this.state.loggedUser.type !== 2)) {
       alert("Oops!\nPlease login first:");
       return <Redirect to={"/login"} />;
     }

@@ -46,7 +46,7 @@ class Nav extends React.Component {
     this.props.onHandleSubmit(e);
 
     this.setState({ selection: 0 });
-    e.target.reset();
+    // e.target.reset();
   };
 
   selectedGenreFilter = e => {
