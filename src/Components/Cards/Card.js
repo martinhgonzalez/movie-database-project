@@ -4,9 +4,7 @@ import "./card.css";
 class Card extends React.Component {
   addFav = () => {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    let favorites = JSON.parse(
-      localStorage.getItem(`${loggedUser.name} favorites`)
-    );
+    let favorites = JSON.parse(localStorage.getItem(`${loggedUser.name} favorites`));
     const index = favorites.indexOf(this.props.id);
 
     if (index > -1) {
@@ -14,30 +12,22 @@ class Card extends React.Component {
 
       favorites.splice(index, 1);
       this.setState({ favorites: favorites });
-      localStorage.setItem(
-        `${loggedUser.name} favorites`,
-        JSON.stringify(favorites)
-      );
+      localStorage.setItem(`${loggedUser.name} favorites`, JSON.stringify(favorites));
     } else {
       favorites.push(this.props.id);
 
       this.setState({ favorites: favorites });
-      localStorage.setItem(
-        `${loggedUser.name} favorites`,
-        JSON.stringify(favorites)
-      );
+      localStorage.setItem(`${loggedUser.name} favorites`, JSON.stringify(favorites));
     }
   };
   favoriteIcon = () => {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    let favorites = JSON.parse(
-      localStorage.getItem(`${loggedUser.name} favorites`)
-    );
-    // const index = favorites.indexOf(this.props.id);
+    let favorites = JSON.parse(localStorage.getItem(`${loggedUser.name} favorites`));
+    const index = favorites.indexOf(this.props.id);
 
-    // if (index > -1) {
-    //   return "favorite";
-    // } else return "favorite_border";
+    if (index > -1) {
+      return "favorite";
+    } else return "favorite_border";
   };
   render() {
     let url = "https://image.tmdb.org/t/p/w500";
@@ -49,11 +39,7 @@ class Card extends React.Component {
             <div class="col s6">
               <div className=" movieCard card teal #424242 grey darken-3">
                 <div className="card-image waves-effect waves-block waves-light">
-                  <img
-                    className="activator"
-                    src={url + this.props.imageUrl}
-                    alt=""
-                  />
+                  <img className="activator" src={url + this.props.imageUrl} alt="" />
                 </div>
                 <div className="card-content #424242 grey darken-3">
                   <span className="card-title activator  center-align ">
