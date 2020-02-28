@@ -24,7 +24,7 @@
   color: #251c1c; 
 }
 
-.btn {
+.btn2 {
   background-color: #251c1c;
   width: 200px;
 }
@@ -32,6 +32,7 @@
 .btnLogin{
   margin-top: 50px;
   margin-left: 145px;
+
 }
 
 .userImg {

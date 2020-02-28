@@ -101,7 +101,7 @@ function MenuAddFromAPI(props) {
             
               </div>
             
-              <button type="submit" className="submitBtn btn   waves-effect waves-light #546e7a blue-grey darken-1">
+              <button type="submit" className="submitBtn btn waves-effect waves-light #546e7a blue-grey darken-1">
                 Submit
               </button>
             </form>
