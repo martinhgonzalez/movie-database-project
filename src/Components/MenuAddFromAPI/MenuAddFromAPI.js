@@ -11,34 +11,74 @@ import {
 function MenuAddFromAPI(props) {
   //
   const handleClick = param => {
+    let pages = parseInt(
+      prompt("How Many Pages do you wish to add from this Filter? (20 results per page)")
+    );
     if (param === "nowPlaying") {
-      getNowPlayingMovies().then(movies => {
-        props.sendArray(movies);
-      });
+      let moviesArray = [];
+      for (let i = 1; i < pages + 1; i++) {
+        getNowPlayingMovies(i).then(movies => {
+          movies.map(movie => {
+            moviesArray.push(movie);
+          });
+        });
+      }
+      setTimeout(() => {
+        props.sendArray(moviesArray);
+      }, 500);
     } else if (param === "popular") {
-      getPopularMovies().then(movies => {
-        props.sendArray(movies);
-      });
+      let moviesArray = [];
+      for (let i = 1; i < pages + 1; i++) {
+        getPopularMovies(i).then(movies => {
+          moviesArray.push(...movies);
+        });
+      }
+      setTimeout(() => {
+        props.sendArray(moviesArray);
+      }, 500);
     } else if (param === "topRated") {
-      getTopRatedMovies().then(movies => {
-        props.sendArray(movies);
-      });
+      let moviesArray = [];
+      for (let i = 1; i < pages + 1; i++) {
+        getTopRatedMovies(i).then(movies => {
+          moviesArray.push(...movies);
+        });
+      }
+      setTimeout(() => {
+        props.sendArray(moviesArray);
+      }, 500);
     } else if (param === "upcoming") {
-      getUpcomingMovies().then(movies => {
-        props.sendArray(movies);
-      });
+      let moviesArray = [];
+      for (let i = 1; i < pages + 1; i++) {
+        getUpcomingMovies(i).then(movies => {
+          moviesArray.push(...movies);
+        });
+      }
+      setTimeout(() => {
+        props.sendArray(moviesArray);
+      }, 500);
     }
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    getMoviesBySearch(e.target.firstElementChild.firstElementChild.firstElementChild.value).then(
-      movies => {
-        props.sendArray(movies);
-      }
+    let pages = parseInt(
+      prompt("How Many Pages do you wish to add from this Filter? (20 results per page)")
     );
-    e.target.reset();
+    {
+      let moviesArray = [];
+      for (let i = 1; i < pages + 1; i++) {
+        getMoviesBySearch(
+          e.target.firstElementChild.firstElementChild.firstElementChild.value,
+          i
+        ).then(movies => {
+          moviesArray.push(...movies);
+        });
+      }
+      setTimeout(() => {
+        props.sendArray(moviesArray);
+      }, 500);
+      e.target.reset();
+    }
   };
 
   return (
