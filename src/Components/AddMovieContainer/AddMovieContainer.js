@@ -29,9 +29,7 @@ class AddMovieContainer extends React.Component {
     let merged = this.mergeArrays(this.state.movies, apiCall);
     let newMovies = merged.length - this.state.movies.length;
     if (newMovies === 0) {
-      alert(
-        "We didn't manage to add any new Movie!\nPlease try again with a different criteria."
-      );
+      alert("We didn't manage to add any new Movie!\nPlease try again with a different criteria.");
     } else {
       this.setState({
         movies: merged
@@ -42,10 +40,8 @@ class AddMovieContainer extends React.Component {
   };
 
   showAddMethod() {
-    if (this.props.display === "custom")
-      return <AddForm sendMovie={this.receiveArray} />;
-    else if (this.props.display === "api")
-      return <MenuAddFromAPI sendArray={this.receiveArray} />;
+    if (this.props.display === "custom") return <AddForm sendMovie={this.receiveArray} />;
+    else if (this.props.display === "api") return <MenuAddFromAPI sendArray={this.receiveArray} />;
     else return <h2 className="h2AddMovieContainer">Pick a method to add Movies!</h2>;
   }
 

@@ -8,53 +8,44 @@ async function getGenresFromAPI() {
   return genres.genres;
 }
 
-async function getLatestMovie() {
+async function getNowPlayingMovies(page) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/latest?api_key=${apiKey}&language=en-US
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${page}    
       `
-  );
-  const latestMovie = await res.json();
-  return latestMovie;
-}
-
-async function getNowPlayingMovies() {
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1    
-      ` //Only page 1.
   );
   const nowPlaying = await res.json();
   return nowPlaying.results;
 }
 
-async function getPopularMovies() {
+async function getPopularMovies(page) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1    
-        ` //Only page 1.
+    `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}    
+        `
   );
   const popularMovies = await res.json();
   return popularMovies.results;
 }
-async function getTopRatedMovies() {
+async function getTopRatedMovies(page) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=${page}
     
-        ` //Only page 1.
+        `
   );
   const topRatedMovies = await res.json();
   return topRatedMovies.results;
 }
 
-async function getUpcomingMovies() {
+async function getUpcomingMovies(page) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1` //Only page 1.
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=${page}`
   );
   const upcomingMovies = await res.json();
   return upcomingMovies.results;
 }
 
-async function getMoviesBySearch(param) {
+async function getMoviesBySearch(param, page) {
   const res = await fetch(
-    `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${param}&page=1&include_adult=false` //Only page 1.
+    `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${param}&page=${page}&include_adult=false` //Only page 1.
   );
   const searchedMovies = await res.json();
 
@@ -63,7 +54,6 @@ async function getMoviesBySearch(param) {
 
 export {
   getGenresFromAPI,
-  getLatestMovie,
   getNowPlayingMovies,
   getPopularMovies,
   getTopRatedMovies,
