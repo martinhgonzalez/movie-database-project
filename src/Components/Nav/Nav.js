@@ -72,7 +72,9 @@ class Nav extends React.Component {
       return "Popular movies!";
     } else if (this.props.filter === "favorite") {
       return "Favorite movies!";
-    } else if (this.props.filter === "upcoming") return "Upcoming movies!";
+    } else if (this.props.filter === "upcoming") {
+      return "Upcoming movies!";
+    } else return String.fromCharCode(160); //returns an invisible character that is taken in count when rendering
   }
 
   render() {
@@ -82,12 +84,9 @@ class Nav extends React.Component {
     return (
       <>
         <nav>
-
           <div className="navBarNav nav-wrapper ">
             <ul id="nav-mobile" className=" navBarNav ">
               <li>
-
-
                 <form onSubmit={this.submitedSearch}>
                   <input
                     required
@@ -95,108 +94,102 @@ class Nav extends React.Component {
                     type="text"
                     className="inputNav validate #bcaaa4 brown lighten-3"
                     placeholder="Search"
-                  />                  
-                
-                    <div className="searchNav">
-                      <button type="submit" className="buttonNav waves-effect waves-brown btn">
-                        SUBMIT
-                      </button>
-                    </div>
-                
-                </form>
-                
-                
-                
-                
-                </li>
-                <div className="divNavOptions">
+                  />
 
-                  
-                  <li>
-                    <a
-                      className="grey darken-3 btn-small "
-                      onClick={() => {
+                  <div className="searchNav">
+                    <button type="submit" className="buttonNav waves-effect waves-brown btn">
+                      SUBMIT
+                    </button>
+                  </div>
+                </form>
+              </li>
+              <div className="divNavOptions">
+                <li>
+                  <a
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
                       this.selectedFilter("all");
                     }}
-                    >All
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="grey darken-3 btn-small "
-                      onClick={() => {
-                        this.selectedFilter("new");
-                      }}
-                    >On Screen
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="grey darken-3 btn-small "
-                      onClick={() => {
-                        this.selectedFilter("favorite");
+                  >
+                    All
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
+                      this.selectedFilter("new");
                     }}
-                    >Favorite
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="grey darken-3 btn-small "
-                      onClick={() => {
+                  >
+                    On Screen
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
+                      this.selectedFilter("favorite");
+                    }}
+                  >
+                    Favorite
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
                       this.selectedFilter("popular");
                     }}
-                    >Popular
-                    </a>
-                  </li>
-                  <li>
-                    <a 
-                      className="grey darken-3 btn-small "
-                      onClick={() => {
+                  >
+                    Popular
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="grey darken-3 btn-small "
+                    onClick={() => {
                       this.selectedFilter("upcoming");
                     }}
-                    >Upcoming
-                    </a>
-                  </li>
+                  >
+                    Upcoming
+                  </a>
+                </li>
 
-                  <li>
-                    <select
-                      onChange={this.onSelectChange}
-                      value={this.state.selection}
-                      class="browser-default"
-                    >
+                <li>
+                  <select
+                    onChange={this.onSelectChange}
+                    value={this.state.selection}
+                    class="browser-default"
+                  >
                     <option value="0" disabled>
                       Genres
                     </option>
-                      {this.iterateGenres()}
-                    </select>
+                    {this.iterateGenres()}
+                  </select>
+                </li>
+
+                <div className="logFilter">
+                  <li>
+                    <div className=" filterName center-align">{this.filterName()}</div>
                   </li>
-                  
-                  <div className="logFilter">
-                    <li>
-                      <div className=" filterName center-align">
-                        {this.filterName()}
-                      </div>
-                    
-                    </li>
-                    
-                    <li>
-                      <a
-                        className="grey darken-3 btn-small "
-                        onClick={() => {
+
+                  <li>
+                    <a
+                      className="grey darken-3 btn-small "
+                      onClick={() => {
                         this.setState({ loggingOut: true });
                       }}
                     >
                       <i class="material-icons left">vpn_key</i>
                       Logout
-                      </a>
-                    </li>
-                  </div>
-                      
-                  </div>
-              </ul>
-            </div>
-          </nav>
-        </>
+                    </a>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </nav>
+      </>
     );
   }
 }

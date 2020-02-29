@@ -35,7 +35,7 @@ class User extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // this.resetValues(); // Fix because it moves nav elements
+    this.resetValues();
     this.setState({ searching: e.target.firstElementChild.value });
   };
 
@@ -43,13 +43,11 @@ class User extends React.Component {
     // Receives the id of the genre and saves it as a state
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
-      return;
+      return "There are no movies uploaded yet! Please contact an Admin for further information.";
     } else {
       let filtered = moviesArray.filter(movie => {
         return movie.genre_ids.includes(parseInt(this.state.genreId));
       });
-
       if (filtered.length !== 0) return filtered;
       else
         return "Your search criteria didn't match anything. You may try again with a different search";
@@ -59,8 +57,7 @@ class User extends React.Component {
   filterByName = () => {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
-      return;
+      return "There are no movies uploaded yet! Please contact an Admin for further information.";
     } else {
       let filtered = moviesArray.filter(movie => {
         return movie.title.toLowerCase().includes(this.state.searching.toLowerCase());
@@ -74,8 +71,7 @@ class User extends React.Component {
   filterByNew() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
-      return;
+      return "There are no movies uploaded yet! Please contact an Admin for further information.";
     } else {
       let actualTimeStamp = this.toTimestamp(new Date());
       let filtered = moviesArray.filter(movie => {
@@ -97,8 +93,7 @@ class User extends React.Component {
   filterByFav() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
-      return;
+      return "There are no movies uploaded yet! Please contact an Admin for further information.";
     } else {
       let favorites = JSON.parse(localStorage.getItem(`${this.state.loggedUser.name} favorites`));
       let filtered = moviesArray.filter(movie => {
@@ -117,8 +112,7 @@ class User extends React.Component {
   filterByPopularity() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
-      return;
+      return "There are no movies uploaded yet! Please contact an Admin for further information.";
     } else {
       moviesArray.sort(function compare(a, b) {
         const popularityA = a.popularity;
@@ -142,8 +136,7 @@ class User extends React.Component {
   filterByUpcoming() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
-      return;
+      return "There are no movies uploaded yet! Please contact an Admin for further information.";
     } else {
       let actualTimeStamp = this.toTimestamp(new Date());
       let filtered = moviesArray.filter(movie => {
@@ -160,8 +153,7 @@ class User extends React.Component {
   getAllMovies() {
     let moviesArray = JSON.parse(localStorage.getItem("movies"));
     if (moviesArray === null) {
-      alert("There are no movies uploaded yet! Please contact an Admin for further information.");
-      return;
+      return "There are no movies uploaded yet! Please contact an Admin for further information.";
     } else {
       if (moviesArray.length !== 0) return moviesArray;
       else
@@ -170,8 +162,6 @@ class User extends React.Component {
   }
 
   getMovies() {
-    console.log("Entrando al getMovies");
-
     if (this.state.genreId !== undefined) {
       return this.filterByGenre();
     }
@@ -250,7 +240,6 @@ class User extends React.Component {
       alert("Oops!\nPlease login first:");
       return <Redirect to={"/login"} />;
     }
-
     return (
       <>
         <h1 className="h1User">Welcome {this.state.loggedUser.name} </h1>

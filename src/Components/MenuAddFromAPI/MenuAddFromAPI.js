@@ -97,7 +97,13 @@ function MenuAddFromAPI(props) {
         <form onSubmit={handleSubmit}>
           <div className="rowSubmit required row">
             <div className="divSearch col s2">
-              <input id="first_name2" type="text" className="search required" placeholder="Search" />
+              <input
+                required
+                id="first_name2"
+                type="text"
+                className="search"
+                placeholder="Search"
+              />
             </div>
           </div>
 
